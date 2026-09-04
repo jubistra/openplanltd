@@ -821,7 +821,7 @@
         </div>
 
         <!-- Contact form -->
-        <form id="contactForm" class="contact-form" action="https://formspree.io/f/openplanltd" method="POST">
+        <form id="contactForm" class="contact-form" action="https://formsubmit.co/witold@openplanltd.co.uk" method="POST">
           <div class="form-row">
             <div class="form-group">
               <label for="cf-name"><span data-lang="en">Your Name</span><span data-lang="pl">Twoje Imię</span></label>
@@ -856,6 +856,10 @@
           </div>
           <!-- Honeypot for spam -->
           <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+          <!-- FormSubmit config -->
+          <input type="hidden" name="_subject" value="New website enquiry - Open Plan Ltd">
+          <input type="hidden" name="_template" value="box">
+          <input type="hidden" name="_next" value="https://openplanltd.co.uk/thank-you.html">
           <button type="submit" class="btn btn-primary btn-lg form-submit-btn">
             <span data-lang="en">Send Message</span><span data-lang="pl">Wyślij Wiadomość</span>
           </button>
