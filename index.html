@@ -376,6 +376,54 @@
     }
     .contact-detail svg { width: 18px; height: 18px; stroke: var(--green-light); fill: none; stroke-width: 2; }
 
+    /* CONTACT FORM */
+    .contact-form {
+      max-width: 560px; margin: 0 auto; text-align: left;
+      display: flex; flex-direction: column; gap: 20px;
+    }
+    .form-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    }
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
+    .form-group-full { grid-column: 1 / -1; }
+    .form-group label {
+      font-size: 0.85rem; font-weight: 600; color: var(--text);
+      letter-spacing: 0.01em;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 12px 16px;
+      color: var(--text); font-size: 0.95rem; font-family: inherit;
+      transition: all var(--transition); width: 100%;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      outline: none; border-color: var(--green);
+      box-shadow: 0 0 0 3px var(--green-glow);
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-group select {
+      appearance: none; -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%238ba896' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 16px center;
+      padding-right: 40px; cursor: pointer;
+    }
+    .form-submit-btn { margin-top: 8px; width: 100%; }
+    .form-status {
+      padding: 16px 20px; border-radius: var(--radius); font-size: 0.9rem;
+      font-weight: 500; text-align: center;
+    }
+    .form-status.success {
+      background: rgba(45, 125, 70, 0.15); border: 1px solid var(--green);
+      color: var(--green-light);
+    }
+    .form-status.error {
+      background: rgba(220, 38, 38, 0.1); border: 1px solid #dc2626;
+      color: #fca5a5;
+    }
+    @media (max-width: 600px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+
     /* FOOTER */
     footer {
       border-top: 1px solid var(--border);
@@ -642,7 +690,49 @@
             <span><span data-lang="en">West London</span><span data-lang="pl">Zachodni Londyn</span></span>
           </div>
         </div>
-        <a href="mailto:openplanltd@yahoo.com" class="btn btn-primary btn-lg"><span data-lang="en">Email Us for a Quote</span><span data-lang="pl">Napisz po Wycenę</span></a>
+
+        <!-- Contact form -->
+        <form id="contactForm" class="contact-form" action="https://formspree.io/f/openplanltd" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cf-name"><span data-lang="en">Your Name</span><span data-lang="pl">Twoje Imię</span></label>
+              <input type="text" id="cf-name" name="name" required placeholder="John Smith" autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label for="cf-email"><span data-lang="en">Email Address</span><span data-lang="pl">Adres Email</span></label>
+              <input type="email" id="cf-email" name="email" required placeholder="john@example.com" autocomplete="email">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cf-phone"><span data-lang="en">Phone Number</span><span data-lang="pl">Numer Telefonu</span></label>
+              <input type="tel" id="cf-phone" name="phone" placeholder="07123 456789" autocomplete="tel">
+            </div>
+            <div class="form-group">
+              <label for="cf-service"><span data-lang="en">Service Needed</span><span data-lang="pl">Usługa</span></label>
+              <select id="cf-service" name="service">
+                <option value=""><span data-lang="en">Select a service…</span><span data-lang="pl">Wybierz usługę…</span></option>
+                <option value="new-builds">New Builds / Nowa Budowa</option>
+                <option value="extensions">Extensions / Rozbudowy</option>
+                <option value="renovations">Renovations / Remonty</option>
+                <option value="groundwork">Groundwork / Roboty Ziemne</option>
+                <option value="repairs">Repairs & Maintenance / Naprawy</option>
+                <option value="project-management">Project Management / Zarządzanie</option>
+                <option value="other">Other / Inne</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group form-group-full">
+            <label for="cf-message"><span data-lang="en">Project Details</span><span data-lang="pl">Szczegóły Projektu</span></label>
+            <textarea id="cf-message" name="message" rows="4" required placeholder="Tell us about your project…"></textarea>
+          </div>
+          <!-- Honeypot for spam -->
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+          <button type="submit" class="btn btn-primary btn-lg form-submit-btn">
+            <span data-lang="en">Send Message</span><span data-lang="pl">Wyślij Wiadomość</span>
+          </button>
+          <div id="formStatus" class="form-status" style="display:none"></div>
+        </form>
       </div>
     </div>
   </section>
@@ -684,6 +774,56 @@
         flag.className = 'flag flag-pl';
         label.textContent = 'PL';
       }
+    }
+
+    // Contact form submission
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+      contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const status = document.getElementById('formStatus');
+        const btn = contactForm.querySelector('.form-submit-btn');
+        const btnText = btn.innerHTML;
+        btn.disabled = true;
+        btn.innerHTML = currentLang === 'pl' ? 'Wysyłanie…' : 'Sending…';
+
+        try {
+          const formData = new FormData(contactForm);
+          const response = await fetch(contactForm.action, {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (response.ok) {
+            status.style.display = 'block';
+            status.className = 'form-status success';
+            status.textContent = currentLang === 'pl'
+              ? 'Dziękujemy! Skontaktujemy się z Tobą wkrótce.'
+              : 'Thank you! We\'ll be in touch soon.';
+            contactForm.reset();
+          } else {
+            throw new Error('Form submission failed');
+          }
+        } catch (err) {
+          // Fallback: open mail client with pre-filled message
+          const name = formData.get('name') || '';
+          const email = formData.get('email') || '';
+          const phone = formData.get('phone') || '';
+          const service = formData.get('service') || '';
+          const message = formData.get('message') || '';
+          const subject = 'Website enquiry — ' + service;
+          const body = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nService: ${service}\n\n${message}`;
+          window.location.href = `mailto:openplanltd@yahoo.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+          status.style.display = 'block';
+          status.className = 'form-status success';
+          status.textContent = currentLang === 'pl'
+            ? 'Otwieram aplikację email…'
+            : 'Opening your email app…';
+        }
+        btn.disabled = false;
+        btn.innerHTML = btnText;
+      });
     }
   </script>
 
