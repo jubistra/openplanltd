@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Openplan Ltd — Construction & Building Works | West London, UK</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Openplan Ltd is a construction and building works company serving West London and surrounding areas. Quality builds, renovations, and groundwork across West London.">
+  <meta name="theme-color" content="#0f1c14">
+
+  <!-- Social preview -->
+  <meta property="og:title" content="Openplan Ltd — Construction & Building Works">
+  <meta property="og:description" content="Construction, renovation, and building works across West London and surrounding areas. Based in West London.">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "GeneralContractor",
+    "name": "Openplan Ltd",
+    "description": "Construction and building works company serving West London and surrounding areas.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "London",
+      "addressCountry": "GB"
+    },
+    "email": "openplanltd@yahoo.com",
+    "areaServed": "West London"
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0f1c14;
+      --bg-elevated: #13281b;
+      --bg-card: #183020;
+      --bg-card-hover: #1e3a27;
+      --border: #25402e;
+      --border-hover: #3a5a42;
+      --green: #2d7d46;
+      --green-light: #4ade80;
+      --green-glow: rgba(45, 125, 70, 0.15);
+      --green-glow-strong: rgba(74, 222, 128, 0.25);
+      --amber: #f59e0b;
+      --text: #e6f0e8;
+      --text-muted: #8ba896;
+      --text-dim: #5d7565;
+      --white: #ffffff;
+      --radius-sm: 8px;
+      --radius: 12px;
+      --radius-lg: 20px;
+      --max-width: 1200px;
+      --header-height: 72px;
+      --shadow: 0 4px 24px rgba(0,0,0,0.3);
+      --shadow-lg: 0 8px 40px rgba(0,0,0,0.4);
+      --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html { scroll-behavior: smooth; scroll-padding-top: var(--header-height); }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    ::selection { background: var(--green); color: var(--white); }
+    a { color: var(--green-light); text-decoration: none; transition: color var(--transition); }
+    a:hover { color: var(--white); }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+    section { padding: 100px 0; position: relative; }
+
+    /* HEADER */
+    header {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: var(--header-height); z-index: 100;
+      background: rgba(15, 28, 20, 0.82);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      transition: all var(--transition);
+    }
+    header.scrolled { background: rgba(15, 28, 20, 0.95); box-shadow: 0 2px 20px rgba(0,0,0,0.3); }
+
+    .nav {
+      max-width: var(--max-width); margin: 0 auto; padding: 0 24px;
+      height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    }
+
+    .nav-brand {
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 800; font-size: 1.25rem; color: var(--white);
+      letter-spacing: -0.02em; flex-shrink: 0;
+    }
+    .nav-brand .logo-mark {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, var(--green), var(--green-light));
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 1.1rem; color: var(--white);
+      box-shadow: 0 0 20px var(--green-glow);
+    }
+
+    .nav-links {
+      display: flex; align-items: center; gap: 32px; flex: 1; justify-content: center;
+    }
+    .nav-links a {
+      color: var(--text-muted); font-weight: 500; font-size: 0.9rem;
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-cta { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+
+    /* Language toggle */
+    .lang-toggle {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 14px; border-radius: var(--radius);
+      background: var(--bg-card); border: 1px solid var(--border);
+      color: var(--text); font-size: 0.8rem; font-weight: 600;
+      cursor: pointer; transition: all var(--transition);
+      font-family: inherit; white-space: nowrap;
+    }
+    .lang-toggle:hover {
+      border-color: var(--green); color: var(--white);
+    }
+    .lang-toggle .flag {
+      display: inline-block;
+      width: 20px; height: 14px;
+      border-radius: 3px;
+      overflow: hidden;
+      position: relative;
+      flex-shrink: 0;
+    }
+    /* Polish flag: white top, red bottom */
+    .lang-toggle .flag-pl {
+      background: linear-gradient(to bottom, #ffffff 50%, #dc143c 50%);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    /* UK flag: simplified (blue field) */
+    .lang-toggle .flag-en {
+      background: #012169;
+      border: 1px solid rgba(255,255,255,0.15);
+      position: relative;
+    }
+    .lang-toggle .flag-en::before {
+      content: ''; position: absolute;
+      top: 0; left: 50%; width: 2px; height: 100%;
+      background: #fff; transform: translateX(-50%);
+    }
+    .lang-toggle .flag-en::after {
+      content: ''; position: absolute;
+      top: 50%; left: 0; width: 100%; height: 2px;
+      background: #fff; transform: translateY(-50%);
+    }
+    .lang-toggle .lang-code { font-weight: 700; letter-spacing: 0.04em; }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 12px 24px; border-radius: var(--radius);
+      font-weight: 600; font-size: 0.9rem; font-family: inherit;
+      border: none; cursor: pointer; transition: all var(--transition);
+      text-decoration: none; white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--green); color: var(--white);
+      box-shadow: 0 4px 14px var(--green-glow);
+    }
+    .btn-primary:hover {
+      background: var(--green-light); transform: translateY(-2px);
+      box-shadow: 0 6px 24px var(--green-glow-strong); color: var(--white);
+    }
+    .btn-secondary {
+      background: transparent; color: var(--text); border: 1px solid var(--border);
+    }
+    .btn-secondary:hover {
+      border-color: var(--border-hover); background: var(--bg-card); color: var(--white);
+    }
+    .btn-lg { padding: 16px 32px; font-size: 1rem; }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh; display: flex; align-items: center; padding-top: var(--header-height);
+      background: radial-gradient(ellipse 80% 50% at 50% -10%, var(--green-glow), transparent),
+                  radial-gradient(ellipse 60% 40% at 80% 60%, rgba(45,125,70,0.08), transparent);
+    }
+    .hero-content { max-width: 880px; margin: 0 auto; text-align: center; }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 7px 16px; background: var(--bg-card);
+      border: 1px solid var(--border); border-radius: 100px;
+      font-size: 0.8rem; font-weight: 500; color: var(--text-muted); margin-bottom: 28px;
+    }
+    .hero-badge .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #22c55e; box-shadow: 0 0 8px #22c55e;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900;
+      line-height: 1.05; letter-spacing: -0.03em;
+      margin-bottom: 24px; color: var(--white);
+    }
+    .hero h1 .gradient-text {
+      background: linear-gradient(135deg, var(--green-light), #86efac);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    .hero p.subtitle {
+      font-size: clamp(1.1rem, 2.2vw, 1.35rem); color: var(--text-muted);
+      max-width: 640px; margin: 0 auto 40px; line-height: 1.7;
+    }
+
+    .hero-cta-group {
+      display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 64px;
+    }
+
+    .trust-signals {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px; max-width: 880px; margin: 0 auto;
+    }
+    .trust-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 24px 20px; text-align: center;
+      transition: all var(--transition);
+    }
+    .trust-card:hover {
+      border-color: var(--border-hover); transform: translateY(-3px); box-shadow: var(--shadow);
+    }
+    .trust-card .stat {
+      font-size: 2rem; font-weight: 800; color: var(--white); letter-spacing: -0.02em;
+    }
+    .trust-card .stat .accent { color: var(--green-light); }
+    .trust-card .label { font-size: 0.8rem; color: var(--text-muted); margin-top: 6px; font-weight: 500; }
+
+    /* SECTION HEADERS */
+    .section-header { text-align: center; max-width: 720px; margin: 0 auto 60px; }
+    .section-label {
+      display: inline-block; font-size: 0.8rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--green-light); margin-bottom: 14px;
+    }
+    .section-header h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800;
+      letter-spacing: -0.02em; color: var(--white); line-height: 1.15; margin-bottom: 16px;
+    }
+    .section-header p { font-size: 1.1rem; color: var(--text-muted); line-height: 1.7; }
+
+    /* SERVICES GRID */
+    .services-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px;
+    }
+    .service-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 32px;
+      transition: all var(--transition); position: relative; overflow: hidden;
+    }
+    .service-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--green), var(--green-light));
+      transform: scaleX(0); transform-origin: left; transition: transform var(--transition);
+    }
+    .service-card:hover {
+      border-color: var(--border-hover); background: var(--bg-card-hover);
+      transform: translateY(-4px); box-shadow: var(--shadow-lg);
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-icon {
+      width: 52px; height: 52px; border-radius: var(--radius);
+      background: linear-gradient(135deg, var(--green), var(--green-light));
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px; box-shadow: 0 0 20px var(--green-glow);
+    }
+    .service-icon svg { width: 26px; height: 26px; stroke: var(--white); fill: none; stroke-width: 2; }
+
+    .service-card h3 {
+      font-size: 1.25rem; font-weight: 700; color: var(--white);
+      margin-bottom: 10px; letter-spacing: -0.01em;
+    }
+    .service-card p { font-size: 0.92rem; color: var(--text-muted); line-height: 1.7; }
+
+    /* PROCESS */
+    #process { background: var(--bg-elevated); }
+    .process-timeline {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px; position: relative;
+    }
+    .process-step {
+      text-align: center; padding: 28px 20px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); transition: all var(--transition);
+    }
+    .process-step:hover { border-color: var(--border-hover); transform: translateY(-3px); }
+    .process-step .step-number {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--green), var(--green-light));
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 1.2rem; color: var(--white);
+      margin: 0 auto 18px; box-shadow: 0 0 20px var(--green-glow);
+    }
+    .process-step h4 { font-size: 1.1rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .process-step p { font-size: 0.87rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+    }
+    .about-text h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800;
+      letter-spacing: -0.02em; color: var(--white); margin-bottom: 20px;
+    }
+    .about-text p { font-size: 1.05rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 16px; }
+    .about-text ul { list-style: none; margin-top: 24px; }
+    .about-text ul li {
+      padding: 10px 0; padding-left: 28px; position: relative;
+      color: var(--text); font-size: 0.95rem; font-weight: 500;
+    }
+    .about-text ul li::before {
+      content: '✓'; position: absolute; left: 0; top: 10px;
+      color: var(--green-light); font-weight: 700;
+    }
+
+    .about-stats {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+    }
+    .about-stat-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 32px 24px; text-align: center;
+      transition: all var(--transition);
+    }
+    .about-stat-card:hover { border-color: var(--border-hover); transform: translateY(-3px); }
+    .about-stat-card .stat {
+      font-size: 2.5rem; font-weight: 900; color: var(--green-light); margin-bottom: 8px;
+    }
+    .about-stat-card .label { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; }
+
+    /* CONTACT */
+    #contact { background: var(--bg-elevated); }
+    .contact-card {
+      max-width: 720px; margin: 0 auto;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-xl); padding: 56px; text-align: center;
+    }
+    .contact-card h2 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 800;
+      color: var(--white); margin-bottom: 16px; letter-spacing: -0.02em;
+    }
+    .contact-card p { font-size: 1.05rem; color: var(--text-muted); margin-bottom: 32px; line-height: 1.7; }
+    .contact-details {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-bottom: 32px;
+    }
+    .contact-detail {
+      display: flex; align-items: center; gap: 10px;
+      padding: 12px 20px; background: var(--bg); border: 1px solid var(--border);
+      border-radius: var(--radius); font-size: 0.9rem; color: var(--text);
+    }
+    .contact-detail svg { width: 18px; height: 18px; stroke: var(--green-light); fill: none; stroke-width: 2; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 48px 0; background: var(--bg);
+    }
+    .footer-content {
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 20px;
+    }
+    .footer-brand {
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 700; color: var(--white); font-size: 1.05rem;
+    }
+    .footer-brand .logo-mark {
+      width: 32px; height: 32px;
+      background: linear-gradient(135deg, var(--green), var(--green-light));
+      border-radius: 8px; display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 0.9rem; color: var(--white);
+    }
+    .footer-info { font-size: 0.85rem; color: var(--text-dim); }
+    .footer-info a { color: var(--text-muted); }
+    .footer-info a:hover { color: var(--green-light); }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-cta { gap: 8px; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      section { padding: 64px 0; }
+      .contact-card { padding: 32px 24px; }
+      .footer-content { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 480px) {
+      .nav-cta .btn-secondary { display: none; }
+    }
+
+    /* Lang toggle visibility — hidden elements */
+    [data-lang="pl"] { display: none; }
+    html[lang="pl"] [data-lang="en"] { display: none; }
+    html[lang="pl"] [data-lang="pl"] { display: inline; }
+    html[lang="pl"] [data-lang-block="pl"] { display: block; }
+    html[lang="pl"] [data-lang-block="en"] { display: none; }
+    [data-lang-block="pl"] { display: none; }
+    html[lang="en"] [data-lang-block="en"] { display: block; }
+    html[lang="en"] [data-lang-block="pl"] { display: none; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header id="header">
+    <nav class="nav">
+      <a href="#hero" class="nav-brand">
+        <div class="logo-mark">OP</div>
+        Openplan
+      </a>
+      <div class="nav-links">
+        <a href="#services"><span data-lang="en">Services</span><span data-lang="pl">Usługi</span></a>
+        <a href="#process"><span data-lang="en">How We Work</span><span data-lang="pl">Jak Pracujemy</span></a>
+        <a href="#about"><span data-lang="en">About</span><span data-lang="pl">O Nas</span></a>
+        <a href="#contact"><span data-lang="en">Contact</span><span data-lang="pl">Kontakt</span></a>
+      </div>
+      <div class="nav-cta">
+        <button class="lang-toggle" id="langToggle" onclick="toggleLang()">
+          <span class="flag flag-pl" id="langFlag"></span>
+          <span class="lang-code" id="langLabel">PL</span>
+        </button>
+        <a href="#contact" class="btn btn-secondary"><span data-lang="en">Get a Quote</span><span data-lang="pl">Wycena</span></a>
+        <a href="#contact" class="btn btn-primary"><span data-lang="en">Start a Project</span><span data-lang="pl">Rozpocznij Projekt</span></a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          <span data-lang="en">Based in West London — Serving surrounding areas</span>
+          <span data-lang="pl">Baza w Zachodnim Londynie — Obsługujemy okoliczne dzielnice</span>
+        </div>
+        <h1>
+          <span data-lang-block="en">Building with <span class="gradient-text">precision</span>,<br>finishing with pride.</span>
+          <span data-lang-block="pl">Budujemy z <span class="gradient-text">precyzją</span>,<br>kończymy z dumą.</span>
+        </h1>
+        <p class="subtitle">
+          <span data-lang-block="en">Openplan Ltd delivers high-quality construction, renovation, and building works across West London and surrounding areas. From groundwork to finishing touches — we build it right.</span>
+          <span data-lang-block="pl">Openplan Ltd realizuje wysokiej jakości roboty budowlane, remontowe i wykończeniowe w Zachodnim Londynie i okolicznych dzielnicach. Od fundamentów po wykończenie — robimy to dobrze.</span>
+        </p>
+        <div class="hero-cta-group">
+          <a href="#contact" class="btn btn-primary btn-lg"><span data-lang="en">Get a Free Quote</span><span data-lang="pl">Darmowa Wycena</span></a>
+          <a href="#services" class="btn btn-secondary btn-lg"><span data-lang="en">Our Services</span><span data-lang="pl">Nasze Usługi</span></a>
+        </div>
+        <div class="trust-signals">
+          <div class="trust-card">
+            <div class="stat"><span class="accent">2024</span></div>
+            <div class="label"><span data-lang="en">Established</span><span data-lang="pl">Rok założenia</span></div>
+          </div>
+          <div class="trust-card">
+            <div class="stat"><span data-lang="en">West London</span><span data-lang="pl">Zach. Londyn</span></div>
+            <div class="label"><span data-lang="en">Area Served</span><span data-lang="pl">Obszar działania</span></div>
+          </div>
+          <div class="trust-card">
+            <div class="stat"><span data-lang="en">Free<span class="accent"> Quotes</span></span><span data-lang="pl">Darmowe<span class="accent"> Wyceny</span></span></div>
+            <div class="label"><span data-lang="en">No Obligation</span><span data-lang="pl">Bez zobowiązania</span></div>
+          </div>
+          <div class="trust-card">
+            <div class="stat"><span data-lang="en">Fully<span class="accent"> Insured</span></span><span data-lang="pl">W pełni<span class="accent"> ubezpieczeni</span></span></div>
+            <div class="label"><span data-lang="en">Peace of Mind</span><span data-lang="pl">Spokój ducha</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label"><span data-lang="en">What We Do</span><span data-lang="pl">Co Robimy</span></div>
+        <h2><span data-lang-block="en">Construction services built to last</span><span data-lang-block="pl">Usługi budowlane na lata</span></h2>
+        <p><span data-lang-block="en">From new builds to extensions, renovations to groundwork — we handle every stage of your project with skill and care.</span><span data-lang-block="pl">Od nowych budów przez rozbudowy, remonty po roboty ziemne — prowadzimy każdy etap Twojego projektu z umiejętnością i starannością.</span></p>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4M9 9v0M9 12v0M9 15v0M9 18v0"/></svg>
+          </div>
+          <h3><span data-lang="en">New Builds</span><span data-lang="pl">Nowe Budowy</span></h3>
+          <p><span data-lang-block="en">Complete construction from foundation to roof. We manage every phase — groundwork, structure, and finishing — to deliver your project on time and to spec.</span><span data-lang-block="pl">Kompleksowa budowa od fundamentów po dach. Zarządzamy każdym etapem — roboty ziemne, konstrukcja i wykończenie — aby projekt zrealizować na czas i zgodnie z planem.</span></p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 12V7H5a2 2 0 010-4h14v4M3 5v14a2 2 0 002 2h16v-5M18 12a2 2 0 100 4h3v-4z"/></svg>
+          </div>
+          <h3><span data-lang="en">Extensions</span><span data-lang="pl">Rozbudowy</span></h3>
+          <p><span data-lang-block="en">Add space and value to your home or commercial property. Seamless integration with your existing structure, built to last and to building regs.</span><span data-lang-block="pl">Dodaj przestrzeń i wartość swojemu domowi lub nieruchomości komercyjnej. Spójne połączenie z istniejącą strukturą, solidnie i zgodnie z normami budowlanymi.</span></p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 12l9-9 9 9M5 10v10h14V10M9 20v-8h6v6"/></svg>
+          </div>
+          <h3><span data-lang="en">Renovations</span><span data-lang="pl">Remonty</span></h3>
+          <p><span data-lang-block="en">Full or partial renovations — modernise tired spaces, fix structural issues, and bring old buildings back to life with quality craftsmanship.</span><span data-lang-block="pl">Pełne lub częściowe remonty — unowocześnij zniszczone przestrzenie, napraw problemy konstrukcyjne i przywróć starym budynkom życie dzięki rzemiosłu najwyższej jakości.</span></p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M2 20h20M4 20V8l8-6 8 6v12M9 20v-8h6v8"/></svg>
+          </div>
+          <h3><span data-lang="en">Groundwork</span><span data-lang="pl">Roboty Ziemne</span></h3>
+          <p><span data-lang-block="en">Site preparation, foundations, drainage, and landscaping. Solid groundwork is the foundation of everything we build — we get it right from the start.</span><span data-lang-block="pl">Przygotowanie terenu, fundamenty, drenaż i zagospodarowanie. Solidne roboty ziemne to podstawa wszystkiego, co budujemy — od początku robimy to dobrze.</span></p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 01.7-7.94"/></svg>
+          </div>
+          <h3><span data-lang="en">Repairs & Maintenance</span><span data-lang="pl">Naprawy i Konserwacja</span></h3>
+          <p><span data-lang-block="en">From structural repairs to ongoing maintenance, we keep your property in top condition. Fast, reliable, and built to last — no job too small.</span><span data-lang-block="pl">Od napraw konstrukcyjnych po bieżącą konserwację — utrzymujemy Twoją nieruchomość w doskonałym stanie. Szybko, solidnie i na lata — żadna praca nie jest za mała.</span></p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg>
+          </div>
+          <h3><span data-lang="en">Project Management</span><span data-lang="pl">Zarządzanie Projektem</span></h3>
+          <p><span data-lang-block="en">Full project oversight — planning, scheduling, subcontractor coordination, and quality control. We keep your project on track and on budget.</span><span data-lang-block="pl">Pełny nadzór nad projektem — planowanie, harmonogram, koordynacja podwykonawców i kontrola jakości. Utrzymujemy Twój projekt na torze i w budżecie.</span></p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label"><span data-lang="en">How We Work</span><span data-lang="pl">Jak Pracujemy</span></div>
+        <h2><span data-lang-block="en">Clear process, no surprises</span><span data-lang-block="pl">Jasny proces, bez niespodzianek</span></h2>
+        <p><span data-lang-block="en">Every project follows a straightforward process so you always know what's happening and what's next.</span><span data-lang-block="pl">Każdy projekt podąża za prostym procesem, więc zawsze wiesz, co się dzieje i co dalej.</span></p>
+      </div>
+      <div class="process-timeline">
+        <div class="process-step">
+          <div class="step-number">1</div>
+          <h4><span data-lang="en">Free Consultation</span><span data-lang="pl">Darmowa Konsultacja</span></h4>
+          <p><span data-lang-block="en">We visit your site, understand your vision, and discuss what's possible — no obligation, no pressure.</span><span data-lang-block="pl">Odwiedzamy Twój teren, rozumiemy Twoją wizję i omawiamy możliwości — bez zobowiązania, bez presji.</span></p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">2</div>
+          <h4><span data-lang="en">Detailed Quote</span><span data-lang="pl">Szczegółowa Wycena</span></h4>
+          <p><span data-lang-block="en">You receive a clear, itemised quote with a timeline. No hidden costs, no vague estimates.</span><span data-lang-block="pl">Otrzymujesz jasną, szczegółową wycenę z harmonogramem. Bez ukrytych kosztów, bez niejasnych szacunków.</span></p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">3</div>
+          <h4><span data-lang="en">Build</span><span data-lang="pl">Budowa</span></h4>
+          <p><span data-lang-block="en">Our team gets to work. Regular updates, clean site, and quality checks at every stage.</span><span data-lang-block="pl">Nasz zespół przystępuje do pracy. Regularne aktualizacje, czysty teren i kontrola jakości na każdym etapie.</span></p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">4</div>
+          <h4><span data-lang="en">Handover</span><span data-lang="pl">Przekazanie</span></h4>
+          <p><span data-lang-block="en">Final walkthrough, snag list resolved, and your project is complete. We don't leave until you're happy.</span><span data-lang-block="pl">Ostatnie oględziny, lista usterek usunięta, projekt zakończony. Nie odchodzimy, dopóki nie będziesz zadowolony.</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text">
+          <div class="section-label"><span data-lang="en">About Openplan</span><span data-lang="pl">O Openplan</span></div>
+          <h2><span data-lang-block="en">A West London builder you can trust</span><span data-lang-block="pl">Budowiec z Zachodnego Londynu, któremu można ufać</span></h2>
+          <p><span data-lang-block="en">Openplan Ltd is a construction and building works company serving West London and surrounding areas. We deliver quality builds for residential and commercial clients alike.</span><span data-lang-block="pl">Openplan Ltd to firma budowlana obsługująca Zachodni Londyn i okoliczne dzielnice. Realizujemy budowę najwyższej jakości dla klientów prywatnych i komercyjnych.</span></p>
+          <p><span data-lang-block="en">We believe construction should be straightforward — clear quotes, honest timelines, and work that speaks for itself. No jargon, no cutting corners, just solid building done properly.</span><span data-lang-block="pl">Wierzymy, że budownictwo powinno być proste — jasne wyceny, uczciwe terminy i praca, która mówi sama za siebie. Bez żargonu, bez oszczędzania na jakości, po prostu solidne budownictwo zrobione porządnie.</span></p>
+          <ul>
+            <li><span data-lang="en">Free initial consultation and site visit</span><span data-lang="pl">Darmowa wstępna konsultacja i wizja lokalna</span></li>
+            <li><span data-lang="en">Clear, itemised quotes — no hidden costs</span><span data-lang="pl">Jasne, szczegółowe wyceny — bez ukrytych kosztów</span></li>
+            <li><span data-lang="en">Fully insured for your peace of mind</span><span data-lang="pl">W pełni ubezpieczeni dla Twojego spokoju</span></li>
+            <li><span data-lang="en">Local, reliable, and built to last</span><span data-lang="pl">Lokalni, rzetelni i budujący na lata</span></li>
+          </ul>
+        </div>
+        <div class="about-stats">
+          <div class="about-stat-card">
+            <div class="stat">100%</div>
+            <div class="label"><span data-lang="en">Commitment to quality</span><span data-lang="pl">Zaangażowanie w jakość</span></div>
+          </div>
+          <div class="about-stat-card">
+            <div class="stat">0</div>
+            <div class="label"><span data-lang="en">Hidden costs</span><span data-lang="pl">Ukrytych kosztów</span></div>
+          </div>
+          <div class="about-stat-card">
+            <div class="stat">W1</div>
+            <div class="label"><span data-lang="en">West London based</span><span data-lang="pl">Baza w Zach. Londynie</span></div>
+          </div>
+          <div class="about-stat-card">
+            <div class="stat">2024</div>
+            <div class="label"><span data-lang="en">Company established</span><span data-lang="pl">Firma założona</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-card">
+        <div class="section-label"><span data-lang="en">Get In Touch</span><span data-lang="pl">Skontaktuj Się</span></div>
+        <h2><span data-lang-block="en">Let's build something</span><span data-lang-block="pl">Zbudujmy coś razem</span></h2>
+        <p><span data-lang-block="en">Whether it's a new build, an extension, or a renovation — we'd love to hear about your project. Get in touch for a free, no-obligation quote.</span><span data-lang-block="pl">Niezależnie czy to nowa budowa, rozbudowa czy remont — chętnie usłyszymy o Twoim projekcie. Skontaktuj się z nami po darmową wycenę bez zobowiązań.</span></p>
+        <div class="contact-details">
+          <div class="contact-detail">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zM22 6l-10 7L2 6"/></svg>
+            <a href="mailto:openplanltd@yahoo.com">openplanltd@yahoo.com</a>
+          </div>
+          <div class="contact-detail">
+            <svg viewBox="0 0 24 24"><path d="M12 2a8 8 0 018 8c0 6-8 12-8 12s-8-6-8-12a8 8 0 018-8z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span><span data-lang="en">West London</span><span data-lang="pl">Zachodni Londyn</span></span>
+          </div>
+        </div>
+        <a href="mailto:openplanltd@yahoo.com" class="btn btn-primary btn-lg"><span data-lang="en">Email Us for a Quote</span><span data-lang="pl">Napisz po Wycenę</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <div class="logo-mark">OP</div>
+          Openplan Ltd
+        </div>
+        <div class="footer-info">
+          <span data-lang="en">Company No. 15702389 · Registered in England · </span><span data-lang="pl">Nr firmy 15702389 · Zarejestrowana w Anglii · </span><a href="mailto:openplanltd@yahoo.com">openplanltd@yahoo.com</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Header scroll effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
+    });
+
+    // Language toggle
+    let currentLang = 'en';
+    function toggleLang() {
+      currentLang = currentLang === 'en' ? 'pl' : 'en';
+      document.documentElement.setAttribute('lang', currentLang);
+      const flag = document.getElementById('langFlag');
+      const label = document.getElementById('langLabel');
+      if (currentLang === 'pl') {
+        flag.className = 'flag flag-en';
+        label.textContent = 'EN';
+      } else {
+        flag.className = 'flag flag-pl';
+        label.textContent = 'PL';
+      }
+    }
+  </script>
+
+</body>
+</html>
