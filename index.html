@@ -943,45 +943,12 @@
     // Contact form submission
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-      contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const status = document.getElementById('formStatus');
+      contactForm.addEventListener('submit', function() {
         const btn = contactForm.querySelector('.form-submit-btn');
-
-        const name = contactForm.querySelector('[name=name]').value.trim();
-        const email = contactForm.querySelector('[name=email]').value.trim();
-        const phone = contactForm.querySelector('[name=phone]').value.trim();
-        const service = contactForm.querySelector('[name=service]').value;
-        const message = contactForm.querySelector('[name=message]').value.trim();
-
-        const subject = 'Website enquiry — ' + (service || 'General');
-        const body = `Name: ${name}
-Email: ${email}
-Phone: ${phone}
-Service: ${service}
-
-${message}`;
-        const mailtoLink = 'mailto:witold@openplanltd.co.uk?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-
-        btn.disabled = true;
-        btn.innerHTML = currentLang === 'pl' ? 'Wysyłanie…' : 'Sending…';
-
-        window.location.href = mailtoLink;
-
-        status.style.display = 'block';
-        status.className = 'form-status success';
-        status.textContent = currentLang === 'pl'
-          ? 'Otwarto aplikację email — wyślij wiadomość.'
-          : 'Opening your email app — please send the message.';
-
-        setTimeout(function() {
-          btn.disabled = false;
-          contactForm.querySelector('.form-submit-btn span[data-lang=en]').innerHTML = 'Send Message';
-          contactForm.querySelector('.form-submit-btn span[data-lang=pl]').innerHTML = 'Wyślij Wiadomość';
-          btn.disabled = false;
-        }, 3000);
+        if (btn) { btn.disabled = true; btn.textContent = currentLang === 'pl' ? 'Wysyłanie…' : 'Sending…'; }
       });
     }
+
   </script>
 
 </body>
