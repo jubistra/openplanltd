@@ -543,14 +543,30 @@
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .nav-cta { gap: 8px; }
-      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-grid { grid-template-columns: 1fr; gap: 32px; }
       section { padding: 48px 0; }
       .contact-card { padding: 32px 24px; }
       .footer-content { flex-direction: column; text-align: center; }
       .footer-info { padding-right: 0; }
+      .hero h1 { font-size: clamp(2rem, 8vw, 2.5rem); margin-bottom: 16px; }
+      .hero p.subtitle { margin: 0 auto 32px; font-size: 1rem; }
+      .hero-cta-group { margin-bottom: 40px; gap: 12px; }
+      .hero-cta-group .btn { flex: 1; min-width: 0; }
+      .trust-signals { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .trust-card { padding: 16px 12px; }
+      .section-header { margin-bottom: 32px; }
+      .section-header h2 { font-size: 1.5rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .process-timeline { grid-template-columns: repeat(2, 1fr); }
+      .about-stats { grid-template-columns: repeat(2, 1fr); }
+      .contact-form { max-width: 100%; }
     }
     @media (max-width: 480px) {
       .nav-cta .btn-secondary { display: none; }
+      .trust-signals { grid-template-columns: 1fr; }
+      .process-timeline { grid-template-columns: 1fr; }
+      .hero-cta-group { flex-direction: column; }
+      .hero-cta-group .btn { width: 100%; }
     }
 
     /* Lang toggle visibility — hidden elements */
