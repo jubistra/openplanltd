@@ -158,7 +158,7 @@
 
     .nav-brand {
       display: flex; align-items: center; gap: 10px;
-      font-weight: 800; font-size: 1.25rem; color: #fff;
+      font-weight: 800; font-size: 1rem; color: #fff;
       letter-spacing: -0.02em; flex-shrink: 0;
     }
     .nav-brand .logo-mark {
@@ -552,7 +552,8 @@
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .nav-cta { gap: 6px; }
-      .nav-brand { font-size: 1rem; }
+      .nav-brand { font-size: 0.8rem; }
+      .nav-brand { word-break: keep-all; white-space: nowrap; }
       .nav-brand .logo-mark { width: 28px; height: 28px; font-size: 0.8rem; }
       .nav-cta .btn { padding: 8px 14px; font-size: 0.8rem; }
       .about-grid { grid-template-columns: 1fr; gap: 56px; }
@@ -600,7 +601,7 @@
     <nav class="nav">
       <a href="#hero" class="nav-brand">
         <div class="logo-mark">OP</div>
-        Open Plan
+        Open Plan Interior Development Ltd
       </a>
       <div class="nav-links">
         <a href="#services"><span data-lang="en">Services</span><span data-lang="pl">Usługi</span></a>
