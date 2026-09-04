@@ -939,50 +939,43 @@
     // Contact form submission
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-      contactForm.addEventListener('submit', async function(e) {
+      contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
         const status = document.getElementById('formStatus');
         const btn = contactForm.querySelector('.form-submit-btn');
-        const btnText = btn.innerHTML;
+
+        const name = contactForm.querySelector('[name=name]').value.trim();
+        const email = contactForm.querySelector('[name=email]').value.trim();
+        const phone = contactForm.querySelector('[name=phone]').value.trim();
+        const service = contactForm.querySelector('[name=service]').value;
+        const message = contactForm.querySelector('[name=message]').value.trim();
+
+        const subject = 'Website enquiry — ' + (service || 'General');
+        const body = `Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Service: ${service}
+
+${message}`;
+        const mailtoLink = 'mailto:witold@openplanltd.co.uk?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+
         btn.disabled = true;
         btn.innerHTML = currentLang === 'pl' ? 'Wysyłanie…' : 'Sending…';
 
-        try {
-          const formData = new FormData(contactForm);
-          const response = await fetch(contactForm.action, {
-            method: 'POST',
-            body: formData,
-            headers: { 'Accept': 'application/json' }
-          });
+        window.location.href = mailtoLink;
 
-          if (response.ok) {
-            status.style.display = 'block';
-            status.className = 'form-status success';
-            status.textContent = currentLang === 'pl'
-              ? 'Dziękujemy! Skontaktujemy się z Tobą wkrótce.'
-              : 'Thank you! We\'ll be in touch soon.';
-            contactForm.reset();
-          } else {
-            throw new Error('Form submission failed');
-          }
-        } catch (err) {
-          // Fallback: open mail client with pre-filled message
-          const name = formData.get('name') || '';
-          const email = formData.get('email') || '';
-          const phone = formData.get('phone') || '';
-          const service = formData.get('service') || '';
-          const message = formData.get('message') || '';
-          const subject = 'Website enquiry — ' + service;
-          const body = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nService: ${service}\n\n${message}`;
-          window.location.href = `mailto:witold@openplanltd.co.uk?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-          status.style.display = 'block';
-          status.className = 'form-status success';
-          status.textContent = currentLang === 'pl'
-            ? 'Otwieram aplikację email…'
-            : 'Opening your email app…';
-        }
-        btn.disabled = false;
-        btn.innerHTML = btnText;
+        status.style.display = 'block';
+        status.className = 'form-status success';
+        status.textContent = currentLang === 'pl'
+          ? 'Otwarto aplikację email — wyślij wiadomość.'
+          : 'Opening your email app — please send the message.';
+
+        setTimeout(function() {
+          btn.disabled = false;
+          contactForm.querySelector('.form-submit-btn span[data-lang=en]').innerHTML = 'Send Message';
+          contactForm.querySelector('.form-submit-btn span[data-lang=pl]').innerHTML = 'Wyślij Wiadomość';
+          btn.disabled = false;
+        }, 3000);
       });
     }
   </script>
