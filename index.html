@@ -540,6 +540,10 @@
     .footer-info a:hover { color: var(--green-light); }
 
     /* MOBILE */
+    @media (max-width: 1000px) {
+      .trust-signals { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    }
+
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .nav-cta { gap: 8px; }
