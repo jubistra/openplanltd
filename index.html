@@ -161,6 +161,11 @@
       font-weight: 800; font-size: 1rem; color: #fff;
       letter-spacing: -0.02em; flex-shrink: 0;
     }
+    .brand-short { display: none; }
+    @media (max-width: 768px) {
+      .brand-full { display: none; }
+      .brand-short { display: inline; }
+    }
     .nav-brand .logo-mark {
       width: 36px; height: 36px;
       background: linear-gradient(135deg, var(--green), var(--green-light));
