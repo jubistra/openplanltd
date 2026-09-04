@@ -5,7 +5,7 @@
   <title>Openplan Ltd — Construction & Building Works | West London, UK</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Openplan Ltd is a construction and building works company serving West London and surrounding areas. Quality builds, renovations, and groundwork across West London.">
-  <meta name="theme-color" content="#0f1c14">
+  <meta name="theme-color" content="#d4213a">
 
   <!-- Social preview -->
   <meta property="og:title" content="Openplan Ltd — Construction & Building Works">
@@ -38,28 +38,28 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #0f1c14;
-      --bg-elevated: #13281b;
-      --bg-card: #183020;
-      --bg-card-hover: #1e3a27;
-      --border: #25402e;
-      --border-hover: #3a5a42;
-      --green: #2d7d46;
-      --green-light: #4ade80;
-      --green-glow: rgba(45, 125, 70, 0.15);
-      --green-glow-strong: rgba(74, 222, 128, 0.25);
+      --bg: #f8f8f9;
+      --bg-elevated: #ffffff;
+      --bg-card: #ffffff;
+      --bg-card-hover: #fef2f3;
+      --border: #e2e3e5;
+      --border-hover: #d4213a;
+      --green: #d4213a;
+      --green-light: #ef3b54;
+      --green-glow: rgba(212, 33, 58, 0.12);
+      --green-glow-strong: rgba(212, 33, 58, 0.22);
       --amber: #f59e0b;
-      --text: #e6f0e8;
-      --text-muted: #8ba896;
-      --text-dim: #5d7565;
+      --text: #1a1a1f;
+      --text-muted: #5a5a6a;
+      --text-dim: #9a9aab;
       --white: #ffffff;
       --radius-sm: 8px;
       --radius: 12px;
       --radius-lg: 20px;
       --max-width: 1200px;
       --header-height: 72px;
-      --shadow: 0 4px 24px rgba(0,0,0,0.3);
-      --shadow-lg: 0 8px 40px rgba(0,0,0,0.4);
+      --shadow: 0 4px 24px rgba(0,0,0,0.08);
+      --shadow-lg: 0 8px 40px rgba(0,0,0,0.12);
       --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
@@ -75,9 +75,9 @@
       overflow-x: hidden;
     }
 
-    ::selection { background: var(--green); color: var(--white); }
-    a { color: var(--green-light); text-decoration: none; transition: color var(--transition); }
-    a:hover { color: var(--white); }
+    ::selection { background: var(--green); color: #fff; }
+    a { color: var(--green); text-decoration: none; transition: color var(--transition); }
+    a:hover { color: var(--green-light); }
 
     ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
@@ -90,12 +90,12 @@
     header {
       position: fixed; top: 0; left: 0; right: 0;
       height: var(--header-height); z-index: 100;
-      background: rgba(15, 28, 20, 0.82);
+      background: rgba(255, 255, 255, 0.82);
       backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
       transition: all var(--transition);
     }
-    header.scrolled { background: rgba(15, 28, 20, 0.95); box-shadow: 0 2px 20px rgba(0,0,0,0.3); }
+    header.scrolled { background: rgba(255, 255, 255, 0.95); box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
 
     .nav {
       max-width: var(--max-width); margin: 0 auto; padding: 0 24px;
@@ -104,7 +104,7 @@
 
     .nav-brand {
       display: flex; align-items: center; gap: 10px;
-      font-weight: 800; font-size: 1.25rem; color: var(--white);
+      font-weight: 800; font-size: 1.25rem; color: var(--text);
       letter-spacing: -0.02em; flex-shrink: 0;
     }
     .nav-brand .logo-mark {
@@ -112,7 +112,7 @@
       background: linear-gradient(135deg, var(--green), var(--green-light));
       border-radius: 10px;
       display: flex; align-items: center; justify-content: center;
-      font-weight: 900; font-size: 1.1rem; color: var(--white);
+      font-weight: 900; font-size: 1.1rem; color: #fff;
       box-shadow: 0 0 20px var(--green-glow);
     }
 
@@ -123,7 +123,7 @@
       color: var(--text-muted); font-weight: 500; font-size: 0.9rem;
       transition: color var(--transition);
     }
-    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover { color: var(--text); }
 
     .nav-cta { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
 
@@ -137,7 +137,7 @@
       font-family: inherit; white-space: nowrap;
     }
     .lang-toggle:hover {
-      border-color: var(--green); color: var(--white);
+      border-color: var(--green); color: var(--text);
     }
     .lang-toggle .flag {
       display: inline-block;
@@ -149,24 +149,14 @@
     }
     /* Polish flag: white top, red bottom */
     .lang-toggle .flag-pl {
-      background: linear-gradient(to bottom, #ffffff 50%, #dc143c 50%);
-      border: 1px solid rgba(255,255,255,0.2);
+      background: linear-gradient(to bottom, #ffffff 50%, #d4213a 50%);
+      border: 1px solid rgba(0,0,0,0.1);
     }
-    /* UK flag: simplified (blue field) */
+    /* UK flag: Union Jack via SVG background */
     .lang-toggle .flag-en {
-      background: #012169;
-      border: 1px solid rgba(255,255,255,0.15);
-      position: relative;
-    }
-    .lang-toggle .flag-en::before {
-      content: ''; position: absolute;
-      top: 0; left: 50%; width: 2px; height: 100%;
-      background: #fff; transform: translateX(-50%);
-    }
-    .lang-toggle .flag-en::after {
-      content: ''; position: absolute;
-      top: 50%; left: 0; width: 100%; height: 2px;
-      background: #fff; transform: translateY(-50%);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 30' width='20' height='10'%3E%3CclipPath id='t'%3E%3Cpath d='M0 0v30h60V0z'/%3E%3C/clipPath%3E%3Cg clip-path='url(%23t)'%3E%3Cpath d='M0 0v30h60V0z' fill='%23012169'/%3E%3Cpath d='M0 0l60 30m0-30L0 30' stroke='%23fff' stroke-width='6'/%3E%3Cpath d='M0 0l60 30m0-30L0 30' stroke='%23C8102E' stroke-width='4'/%3E%3Cpath d='M30 0v30M0 15h60' stroke='%23fff' stroke-width='10'/%3E%3Cpath d='M30 0v30M0 15h60' stroke='%23C8102E' stroke-width='6'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: cover;
+      border: 1px solid rgba(0,0,0,0.08);
     }
     .lang-toggle .lang-code { font-weight: 700; letter-spacing: 0.04em; }
 
@@ -179,18 +169,18 @@
       text-decoration: none; white-space: nowrap;
     }
     .btn-primary {
-      background: var(--green); color: var(--white);
+      background: var(--green); color: #fff;
       box-shadow: 0 4px 14px var(--green-glow);
     }
     .btn-primary:hover {
       background: var(--green-light); transform: translateY(-2px);
-      box-shadow: 0 6px 24px var(--green-glow-strong); color: var(--white);
+      box-shadow: 0 6px 24px var(--green-glow-strong); color: #fff;
     }
     .btn-secondary {
       background: transparent; color: var(--text); border: 1px solid var(--border);
     }
     .btn-secondary:hover {
-      border-color: var(--border-hover); background: var(--bg-card); color: var(--white);
+      border-color: var(--border-hover); background: var(--bg-card); color: var(--text);
     }
     .btn-lg { padding: 16px 32px; font-size: 1rem; }
 
@@ -218,10 +208,10 @@
     .hero h1 {
       font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900;
       line-height: 1.05; letter-spacing: -0.03em;
-      margin-bottom: 24px; color: var(--white);
+      margin-bottom: 24px; color: var(--text);
     }
     .hero h1 .gradient-text {
-      background: linear-gradient(135deg, var(--green-light), #86efac);
+      background: linear-gradient(135deg, var(--green-light), #ff6b7d);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
 
@@ -247,7 +237,7 @@
       border-color: var(--border-hover); transform: translateY(-3px); box-shadow: var(--shadow);
     }
     .trust-card .stat {
-      font-size: 2rem; font-weight: 800; color: var(--white); letter-spacing: -0.02em;
+      font-size: 2rem; font-weight: 800; color: var(--text); letter-spacing: -0.02em;
     }
     .trust-card .stat .accent { color: var(--green-light); }
     .trust-card .label { font-size: 0.8rem; color: var(--text-muted); margin-top: 6px; font-weight: 500; }
@@ -261,7 +251,7 @@
     }
     .section-header h2 {
       font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800;
-      letter-spacing: -0.02em; color: var(--white); line-height: 1.15; margin-bottom: 16px;
+      letter-spacing: -0.02em; color: var(--text); line-height: 1.15; margin-bottom: 16px;
     }
     .section-header p { font-size: 1.1rem; color: var(--text-muted); line-height: 1.7; }
 
@@ -291,10 +281,10 @@
       display: flex; align-items: center; justify-content: center;
       margin-bottom: 20px; box-shadow: 0 0 20px var(--green-glow);
     }
-    .service-icon svg { width: 26px; height: 26px; stroke: var(--white); fill: none; stroke-width: 2; }
+    .service-icon svg { width: 26px; height: 26px; stroke: #fff; fill: none; stroke-width: 2; }
 
     .service-card h3 {
-      font-size: 1.25rem; font-weight: 700; color: var(--white);
+      font-size: 1.25rem; font-weight: 700; color: var(--text);
       margin-bottom: 10px; letter-spacing: -0.01em;
     }
     .service-card p { font-size: 0.92rem; color: var(--text-muted); line-height: 1.7; }
@@ -315,10 +305,10 @@
       width: 44px; height: 44px; border-radius: 50%;
       background: linear-gradient(135deg, var(--green), var(--green-light));
       display: flex; align-items: center; justify-content: center;
-      font-weight: 800; font-size: 1.2rem; color: var(--white);
+      font-weight: 800; font-size: 1.2rem; color: #fff;
       margin: 0 auto 18px; box-shadow: 0 0 20px var(--green-glow);
     }
-    .process-step h4 { font-size: 1.1rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .process-step h4 { font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 8px; }
     .process-step p { font-size: 0.87rem; color: var(--text-muted); line-height: 1.6; }
 
     /* ABOUT */
@@ -327,7 +317,7 @@
     }
     .about-text h2 {
       font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800;
-      letter-spacing: -0.02em; color: var(--white); margin-bottom: 20px;
+      letter-spacing: -0.02em; color: var(--text); margin-bottom: 20px;
     }
     .about-text p { font-size: 1.05rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 16px; }
     .about-text ul { list-style: none; margin-top: 24px; }
@@ -363,7 +353,7 @@
     }
     .contact-card h2 {
       font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 800;
-      color: var(--white); margin-bottom: 16px; letter-spacing: -0.02em;
+      color: var(--text); margin-bottom: 16px; letter-spacing: -0.02em;
     }
     .contact-card p { font-size: 1.05rem; color: var(--text-muted); margin-bottom: 32px; line-height: 1.7; }
     .contact-details {
@@ -468,13 +458,13 @@
     }
     .footer-brand {
       display: flex; align-items: center; gap: 10px;
-      font-weight: 700; color: var(--white); font-size: 1.05rem;
+      font-weight: 700; color: var(--text); font-size: 1.05rem;
     }
     .footer-brand .logo-mark {
       width: 32px; height: 32px;
       background: linear-gradient(135deg, var(--green), var(--green-light));
       border-radius: 8px; display: flex; align-items: center; justify-content: center;
-      font-weight: 900; font-size: 0.9rem; color: var(--white);
+      font-weight: 900; font-size: 0.9rem; color: #fff;
     }
     .footer-info { font-size: 0.85rem; color: var(--text-dim); }
     .footer-info a { color: var(--text-muted); }
@@ -553,7 +543,7 @@
         </div>
         <div class="trust-signals">
           <div class="trust-card">
-            <div class="stat"><span class="accent">2024</span></div>
+            <div class="stat"><span class="accent">2017</span></div>
             <div class="label"><span data-lang="en">Established</span><span data-lang="pl">Rok założenia</span></div>
           </div>
           <div class="trust-card">
@@ -694,11 +684,11 @@
             <div class="label"><span data-lang="en">Hidden costs</span><span data-lang="pl">Ukrytych kosztów</span></div>
           </div>
           <div class="about-stat-card">
-            <div class="stat">W1</div>
-            <div class="label"><span data-lang="en">West London based</span><span data-lang="pl">Baza w Zach. Londynie</span></div>
+            <div class="stat"><span data-lang="en">W3–W14</span><span data-lang="pl">W3–W14</span></div>
+            <div class="label"><span data-lang="en">Brentford · Chiswick · Ealing · Acton</span><span data-lang="pl">Brentford · Chiswick · Ealing · Acton</span></div>
           </div>
           <div class="about-stat-card">
-            <div class="stat">2024</div>
+            <div class="stat">2017</div>
             <div class="label"><span data-lang="en">Company established</span><span data-lang="pl">Firma założona</span></div>
           </div>
         </div>
