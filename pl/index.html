@@ -2,15 +2,18 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8">
-  <title>Dziękujemy — Open Plan Ltd</title>
+  <title>Open Plan Interior Development Ltd — Budownictwo i Prace Budowlane | Zachodni Londyn, UK</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Dziękujemy za kontakt z Open Plan Ltd.">
+  <meta name="description" content="Open Plan Interior Development Ltd to firma budowlano-remontowa obsługująca Zachodni Londyn i okolice. Wysokiej jakości budowy, remonty i prace ziemne w Zachodnim Londynie.">
   <meta name="theme-color" content="#d4213a">
 
   <!-- Social preview -->
   <meta property="og:title" content="Open Plan Interior Development Ltd — Budownictwo i Prace Budowlane">
   <meta property="og:description" content="Budownictwo, remonty i prace budowlane w Zachodnim Londynie i okolicach. Siedziba w Zachodnim Londynie.">
   <meta property="og:type" content="website">
+  <link rel="canonical" href="https://openplaninteriordevelopment.co.uk/pl/">
+  <link rel="alternate" hreflang="en" href="https://openplaninteriordevelopment.co.uk/">
+  <link rel="alternate" hreflang="pl" href="https://openplaninteriordevelopment.co.uk/pl/">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -597,6 +600,79 @@
     [data-lang-block="pl"] { display: none; }
     html[lang="en"] [data-lang-block="en"] { display: block; }
     html[lang="en"] [data-lang-block="pl"] { display: none; }
+
+    /* WORK GALLERY */
+    .work-tabs {
+      display: flex; justify-content: center; flex-wrap: wrap;
+      gap: 8px; margin: 0 auto 48px;
+    }
+    .work-tab {
+      padding: 10px 24px; border-radius: 999px;
+      font-size: 0.9rem; font-weight: 600; cursor: pointer;
+      font-family: inherit; letter-spacing: 0.01em;
+      background: transparent; color: var(--text-muted);
+      border: 1px solid var(--border);
+      transition: all var(--transition);
+    }
+    .work-tab:hover { border-color: var(--border-hover); color: var(--text); }
+    .work-tab.active {
+      background: linear-gradient(135deg, var(--green), var(--green-light));
+      color: #fff; border-color: transparent;
+      box-shadow: 0 0 20px var(--green-glow);
+    }
+    .work-grid { column-count: 2; column-gap: 28px; }
+    .work-card {
+      break-inside: avoid; -webkit-column-break-inside: avoid;
+      margin-bottom: 28px; display: block;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); overflow: hidden;
+      transition: all var(--transition); cursor: zoom-in;
+    }
+    .work-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-4px); box-shadow: var(--shadow-lg);
+    }
+    .work-img-wrap { overflow: hidden; }
+    .work-card img {
+      display: block; width: 100%; height: auto;
+      transition: transform 0.5s ease;
+    }
+    .work-card:hover img { transform: scale(1.03); }
+    .work-caption {
+      padding: 14px 18px; font-size: 0.85rem; font-weight: 500;
+      color: var(--text-muted); border-top: 1px solid var(--border);
+      background: var(--bg-card);
+    }
+    .work-card.hidden-phase { display: none; }
+
+    /* LIGHTBOX */
+    .work-lightbox {
+      position: fixed; inset: 0; z-index: 500; display: none;
+      align-items: center; justify-content: center;
+      background: rgba(6, 8, 12, 0.94); padding: 24px; cursor: zoom-out;
+    }
+    .work-lightbox img {
+      max-width: 100%; max-height: 92vh;
+      border-radius: var(--radius); box-shadow: var(--shadow-lg);
+    }
+    .work-lightbox .lb-close {
+      position: absolute; top: 20px; right: 24px;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2);
+      color: #fff; font-size: 1.4rem; line-height: 1; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all var(--transition);
+    }
+    .work-lightbox .lb-close:hover { background: rgba(255,255,255,0.2); }
+    .work-lightbox .lb-caption {
+      position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+      color: #fff; font-size: 0.9rem; font-weight: 500;
+      background: rgba(0,0,0,0.55); padding: 8px 18px; border-radius: 999px;
+      max-width: 90%; text-align: center;
+    }
+    @media (max-width: 768px) {
+      .work-grid { column-count: 1; column-gap: 0; }
+    }
   </style>
 </head>
 <body>
@@ -610,51 +686,379 @@
         <span class="brand-short">Open Plan</span>
       </a>
       <div class="nav-links">
-        <a href="pl.html#services"><span>Usługi</span></a>
-        <a href="pl.html#process"><span>Jak Pracujemy</span></a>
-        <a href="pl.html#about"><span>O Nas</span></a>
-        <a href="pl.html#contact"><span>Kontakt</span></a>
+        <a href="#services"><span>Usługi</span></a>
+        <a href="#work"><span>Nasze Prace</span></a>
+        <a href="#process"><span>Jak Pracujemy</span></a>
+        <a href="#about"><span>O Nas</span></a>
+        <a href="#contact"><span>Kontakt</span></a>
       </div>
       <div class="nav-cta">
         <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle theme">
           <svg class="theme-icon-dark" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" /></svg>
           <svg class="theme-icon-light" viewbox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5" /><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" /></svg>
         </button>
-        <a class="lang-toggle" href="thank-you.html" aria-label="English">
+        <a class="lang-toggle" href="/" aria-label="English">
           <span class="flag flag-en"></span>
           <span class="lang-code">EN</span>
         </a>
-        <a href="pl.html#contact" class="btn btn-secondary"><span>Wycena</span></a>
-        <a href="pl.html#contact" class="btn btn-primary"><span>Rozpocznij Projekt</span></a>
+        <a href="#contact" class="btn btn-secondary"><span>Wycena</span></a>
+        <a href="#contact" class="btn btn-primary"><span>Rozpocznij Projekt</span></a>
       </div>
     </nav>
   </header>
 
   <!-- HERO -->
-  <section id="hero" style="min-height: 60vh;">
+  <section id="hero">
     <div class="container">
       <div class="hero-content">
         <div class="hero-badge">
           <span class="dot"></span>
           
-          <span>Wiadomość wysłana</span>
+          <span>Baza w Zachodnim Londynie — Obsługujemy okoliczne dzielnice</span>
         </div>
         <h1>
           
-          <span>Dziękujemy za kontakt.</span>
+          <span>Budujemy z <span class="gradient-text">precyzją</span>,<br>kończymy z dumą.</span>
         </h1>
+        <div class="hero-cta-group">
+          <a href="#contact" class="btn btn-primary btn-lg"><span>Darmowa Wycena</span></a>
+          <a href="#services" class="btn btn-secondary btn-lg"><span>Nasze Usługi</span></a>
+        </div>
         <p class="subtitle">
           
-          <span>Otrzymaliśmy Twoje zapytanie i odpowiemy w ciągu 24 godzin. W pilnych sprawach napisz do nas na WhatsApp.</span>
+          <span>Open Plan Interior Development Ltd realizuje wysokiej jakości roboty budowlane, remontowe i wykończeniowe w Zachodnim Londynie i okolicznych dzielnicach. Od fundamentów po wykończenie — robimy to dobrze.</span>
         </p>
-        <div class="hero-cta-group" style="margin-top: 60px;">
-          <a href="https://wa.me/447834737937" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
-            <span>WhatsApp</span>
-          </a>
-          <a href="https://openplaninteriordevelopment.co.uk/pl.html" class="btn btn-secondary btn-lg">
-            <span>Powrót</span>
-          </a>
+        <div class="trust-signals">
+          <div class="trust-card">
+            <div class="stat"><span class="accent">2017</span></div>
+            <div class="label"><span>Rok założenia</span></div>
+          </div>
+          <div class="trust-card">
+            <div class="stat"><span>Zach. Londyn</span></div>
+            <div class="label"><span>Obszar działania</span></div>
+          </div>
+          <div class="trust-card">
+            <div class="stat"><span>Darmowe<span class="accent"> Wyceny</span></span></div>
+            <div class="label"><span>Bez zobowiązania</span></div>
+          </div>
+          <div class="trust-card">
+            <div class="stat"><span>W pełni<span class="accent"> ubezpieczeni</span></span></div>
+            <div class="label"><span>Spokój ducha</span></div>
+          </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label"><span>Co Robimy</span></div>
+        <h2><span>Usługi budowlane na lata</span></h2>
+        <p><span>Od rozbudów i remontów po roboty ziemne i naprawy — prowadzimy każdy etap Twojego projektu z umiejętnością i starannością.</span></p>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewbox="0 0 24 24"><path d="M21 12V7H5a2 2 0 010-4h14v4M3 5v14a2 2 0 002 2h16v-5M18 12a2 2 0 100 4h3v-4z" /></svg>
+          </div>
+          <h3><span>Rozbudowy</span></h3>
+          <p><span>Dodaj przestrzeń i wartość swojemu domowi lub nieruchomości komercyjnej. Spójne połączenie z istniejącą strukturą, solidnie i zgodnie z normami budowlanymi.</span></p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewbox="0 0 24 24"><path d="M3 12l9-9 9 9M5 10v10h14V10M9 20v-8h6v6" /></svg>
+          </div>
+          <h3><span>Remonty</span></h3>
+          <p><span>Pełne lub częściowe remonty — unowocześnij zniszczone przestrzenie, napraw problemy konstrukcyjne i przywróć starym budynkom życie dzięki rzemiosłu najwyższej jakości.</span></p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewbox="0 0 24 24"><path d="M2 20h20M4 20V8l8-6 8 6v12M9 20v-8h6v8" /></svg>
+          </div>
+          <h3><span>Roboty Ziemne</span></h3>
+          <p><span>Przygotowanie terenu, fundamenty, drenaż i zagospodarowanie. Solidne roboty ziemne to podstawa wszystkiego, co budujemy — od początku robimy to dobrze.</span></p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewbox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 01.7-7.94" /></svg>
+          </div>
+          <h3><span>Naprawy i Konserwacja</span></h3>
+          <p><span>Od napraw konstrukcyjnych po bieżącą konserwację — utrzymujemy Twoją nieruchomość w doskonałym stanie. Szybko, solidnie i na lata — żadna praca nie jest za mała.</span></p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewbox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z" /></svg>
+          </div>
+          <h3><span>Zarządzanie Projektem</span></h3>
+          <p><span>Pełny nadzór nad projektem — planowanie, harmonogram, koordynacja podwykonawców i kontrola jakości. Utrzymujemy Twój projekt na torze i w budżecie.</span></p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work" aria-label="Our recent work">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label"><span>Ostatni Projekt</span></div>
+        <h2><span>Kamienica w Chelsea — przemieniona</span></h2>
+        <p><span>Kompletny remont w Chelsea, w zachodnim Londynie — nowa konstrukcja stalowa, zmieniony układ pomieszczeń i wykończenia z najwyższej półki w każdym wnętrzu.</span></p>
+      </div>
+
+      <div class="work-tabs" role="tablist" aria-label="Project phases">
+        <button class="work-tab active" data-phase="after" role="tab" aria-selected="true"><span>Po</span></button>
+        <button class="work-tab" data-phase="during" role="tab" aria-selected="false"><span>W trakcie</span></button>
+        <button class="work-tab" data-phase="before" role="tab" aria-selected="false"><span>Przed</span></button>
+      </div>
+
+      <div class="work-grid">
+
+<figure class="work-card" data-phase="after" data-caption-en="Kitchen" data-caption-pl="Kuchnia">
+          <div class="work-img-wrap"><img src="/images/after-kitchen-a.jpg" alt="Renovated kitchen — Chelsea, West London" loading="lazy" width="1888" height="900"></div>
+          <figcaption class="work-caption"><span>Kuchnia</span></figcaption>
+        </figure>
+
+<figure class="work-card" data-phase="after" data-caption-en="Kitchen &amp; dining" data-caption-pl="Kuchnia i jadalnia">
+          <div class="work-img-wrap"><img src="/images/after-kitchen-b.jpg" alt="Renovated kitchen and dining area" loading="lazy" width="1254" height="900"></div>
+          <figcaption class="work-caption"><span>Kuchnia i jadalnia</span></figcaption>
+        </figure>
+
+<figure class="work-card" data-phase="after" data-caption-en="Study" data-caption-pl="Gabinet">
+          <div class="work-img-wrap"><img src="/images/after-study.jpg" alt="Renovated study" loading="lazy" width="1254" height="900"></div>
+          <figcaption class="work-caption"><span>Gabinet</span></figcaption>
+        </figure>
+
+<figure class="work-card" data-phase="after" data-caption-en="Living room &amp; hall" data-caption-pl="Salon i przedpokój">
+          <div class="work-img-wrap"><img src="/images/after-living-hall.jpg" alt="Renovated living room and hall" loading="lazy" width="1254" height="900"></div>
+          <figcaption class="work-caption"><span>Salon i przedpokój</span></figcaption>
+        </figure>
+
+<figure class="work-card" data-phase="after" data-caption-en="Bedroom &amp; en-suite" data-caption-pl="Sypialnia z łazienką">
+          <div class="work-img-wrap"><img src="/images/after-bedrooms.jpg" alt="Renovated bedroom and en-suite" loading="lazy" width="1254" height="900"></div>
+          <figcaption class="work-caption"><span>Sypialnia z łazienką</span></figcaption>
+        </figure>
+
+<figure class="work-card" data-phase="after" data-caption-en="Bathrooms" data-caption-pl="Łazienki">
+          <div class="work-img-wrap"><img src="/images/after-bathrooms.jpg" alt="Renovated bathrooms" loading="lazy" width="1888" height="900"></div>
+          <figcaption class="work-caption"><span>Łazienki</span></figcaption>
+        </figure>
+
+<figure class="work-card" data-phase="after" data-caption-en="Front elevation" data-caption-pl="Elewacja frontowa">
+          <div class="work-img-wrap"><img src="/images/after-front.jpg" alt="Refurbished front elevation" loading="lazy" width="1888" height="900"></div>
+          <figcaption class="work-caption"><span>Elewacja frontowa</span></figcaption>
+        </figure>
+
+<figure class="work-card" data-phase="after" data-caption-en="Entrance" data-caption-pl="Wejście">
+          <div class="work-img-wrap"><img src="/images/after-entrance.jpg" alt="Refurbished entrance" loading="lazy" width="1254" height="900"></div>
+          <figcaption class="work-caption"><span>Wejście</span></figcaption>
+        </figure>
+
+<figure class="work-card" data-phase="after" data-caption-en="Rooftop terrace" data-caption-pl="Taras na dachu">
+          <div class="work-img-wrap"><img src="/images/after-terrace.jpg" alt="Rooftop terrace" loading="lazy" width="1888" height="900"></div>
+          <figcaption class="work-caption"><span>Taras na dachu</span></figcaption>
+        </figure>
+
+<figure class="work-card" data-phase="after" data-caption-en="Floor plan — 183.8 m² / 1,978 sq ft" data-caption-pl="Rzut kondygnacji — 183,8 m²">
+          <div class="work-img-wrap"><img src="/images/after-floor-plan.jpg" alt="Floor plan of the four-storey house — Chelsea, West London" loading="lazy" width="771" height="599"></div>
+          <figcaption class="work-caption"><span>Rzut kondygnacji</span></figcaption>
+        </figure>
+
+<figure class="work-card hidden-phase" data-phase="during" data-caption-en="Structural steelwork" data-caption-pl="Konstrukcja stalowa">
+          <div class="work-img-wrap"><img src="/images/during-steelwork.jpg" alt="Structural steelwork being installed" loading="lazy" width="1888" height="900"></div>
+          <figcaption class="work-caption"><span>Konstrukcja stalowa</span></figcaption>
+        </figure>
+
+<figure class="work-card hidden-phase" data-phase="during" data-caption-en="Wall openings" data-caption-pl="Otwory w ścianach">
+          <div class="work-img-wrap"><img src="/images/during-openings.jpg" alt="New wall openings formed and propped" loading="lazy" width="1888" height="900"></div>
+          <figcaption class="work-caption"><span>Otwory w ścianach</span></figcaption>
+        </figure>
+
+<figure class="work-card hidden-phase" data-phase="during" data-caption-en="Excavation &amp; underpinning" data-caption-pl="Wykopy i podbijanie">
+          <div class="work-img-wrap"><img src="/images/during-excavation.jpg" alt="Excavation and underpinning works" loading="lazy" width="1888" height="900"></div>
+          <figcaption class="work-caption"><span>Wykopy i podbijanie</span></figcaption>
+        </figure>
+
+<figure class="work-card hidden-phase" data-phase="during" data-caption-en="Steelwork installation" data-caption-pl="Montaż konstrukcji stalowej">
+          <div class="work-img-wrap"><img src="/images/during-steel.jpg" alt="Steel beams craned into position" loading="lazy" width="1888" height="900"></div>
+          <figcaption class="work-caption"><span>Montaż konstrukcji stalowej</span></figcaption>
+        </figure>
+
+<figure class="work-card hidden-phase" data-phase="during" data-caption-en="Scaffolding &amp; finishing" data-caption-pl="Rusztowania i wykończenia">
+          <div class="work-img-wrap"><img src="/images/during-scaffolding.jpg" alt="Scaffolding and finishing works" loading="lazy" width="1888" height="900"></div>
+          <figcaption class="work-caption"><span>Rusztowania i wykończenia</span></figcaption>
+        </figure>
+
+<figure class="work-card hidden-phase" data-phase="before" data-caption-en="Exterior, bathroom &amp; bedroom" data-caption-pl="Elewacja, łazienka i sypialnia">
+          <div class="work-img-wrap"><img src="/images/before-1.jpg" alt="Original condition — exterior, bathroom and bedroom" loading="lazy" width="1888" height="900"></div>
+          <figcaption class="work-caption"><span>Elewacja, łazienka i sypialnia</span></figcaption>
+        </figure>
+
+<figure class="work-card hidden-phase" data-phase="before" data-caption-en="Facade, garden &amp; kitchen" data-caption-pl="Elewacja, ogród i kuchnia">
+          <div class="work-img-wrap"><img src="/images/before-2.jpg" alt="Original condition — facade, garden and kitchen" loading="lazy" width="1888" height="900"></div>
+          <figcaption class="work-caption"><span>Elewacja, ogród i kuchnia</span></figcaption>
+        </figure>
+
+<figure class="work-card hidden-phase" data-phase="before" data-caption-en="Rear, staircase &amp; bedroom" data-caption-pl="Tył budynku, schody i sypialnia">
+          <div class="work-img-wrap"><img src="/images/before-3.jpg" alt="Original condition — rear, staircase and bedroom" loading="lazy" width="1888" height="900"></div>
+          <figcaption class="work-caption"><span>Tył budynku, schody i sypialnia</span></figcaption>
+        </figure>
+
+      </div>
+    </div>
+
+    <div class="work-lightbox" id="workLightbox" role="dialog" aria-modal="true" aria-label="Image preview">
+      <img id="workLightboxImg" src="" alt="">
+      <span class="lb-caption" id="workLightboxCaption"></span>
+      <button class="lb-close" aria-label="Close">×</button>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label"><span>Jak Pracujemy</span></div>
+        <h2><span>Jasny proces, bez niespodzianek</span></h2>
+        <p><span>Każdy projekt podąża za prostym procesem, więc zawsze wiesz, co się dzieje i co dalej.</span></p>
+      </div>
+      <div class="process-timeline">
+        <div class="process-step">
+          <div class="step-number">1</div>
+          <h4><span>Darmowa Konsultacja</span></h4>
+          <p><span>Odwiedzamy Twój teren, rozumiemy Twoją wizję i omawiamy możliwości — bez zobowiązania, bez presji.</span></p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">2</div>
+          <h4><span>Szczegółowa Wycena</span></h4>
+          <p><span>Otrzymujesz jasną, szczegółową wycenę z harmonogramem. Bez ukrytych kosztów, bez niejasnych szacunków.</span></p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">3</div>
+          <h4><span>Budowa</span></h4>
+          <p><span>Nasz zespół przystępuje do pracy. Regularne aktualizacje, czysty teren i kontrola jakości na każdym etapie.</span></p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">4</div>
+          <h4><span>Przekazanie</span></h4>
+          <p><span>Ostatnie oględziny, lista usterek usunięta, projekt zakończony. Nie odchodzimy, dopóki nie będziesz zadowolony.</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text">
+          <div class="section-label"><span>O Open Plan</span></div>
+          <h2><span>Budowiec z Zachodnego Londynu, któremu można ufać</span></h2>
+          <p><span>Open Plan Interior Development Ltd to firma budowlana obsługująca Zachodni Londyn i okoliczne dzielnice. Realizujemy budowę najwyższej jakości dla klientów prywatnych i komercyjnych.</span></p>
+          <p><span>Wierzymy, że budownictwo powinno być proste — jasne wyceny, uczciwe terminy i praca, która mówi sama za siebie. Bez żargonu, bez oszczędzania na jakości, po prostu solidne budownictwo zrobione porządnie.</span></p>
+          <ul>
+            <li><span>Darmowa wstępna konsultacja i wizja lokalna</span></li>
+            <li><span>Jasne, szczegółowe wyceny — bez ukrytych kosztów</span></li>
+            <li><span>W pełni ubezpieczeni dla Twojego spokoju</span></li>
+            <li><span>Lokalni, rzetelni i budujący na lata</span></li>
+          </ul>
+        </div>
+        <div class="about-stats">
+          <div class="about-stat-card">
+            <div class="stat">100%</div>
+            <div class="label"><span>Zaangażowanie w jakość</span></div>
+          </div>
+          <div class="about-stat-card">
+            <div class="stat">0</div>
+            <div class="label"><span>Ukrytych kosztów</span></div>
+          </div>
+          <div class="about-stat-card">
+            <div class="stat"><span>Zachodni Londyn</span></div>
+            <div class="label"><span>i okoliczne dzielnice</span></div>
+          </div>
+          <div class="about-stat-card">
+            <div class="stat">2017</div>
+            <div class="label"><span>Firma założona</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-card">
+        <div class="section-label"><span>Skontaktuj Się</span></div>
+        <h2><span>Zbudujmy coś razem</span></h2>
+        <p><span>Niezależnie czy to rozbudowa, remont czy naprawa — chętnie usłyszymy o Twoim projekcie. Skontaktuj się z nami po darmową wycenę bez zobowiązań.</span></p>
+        <div class="contact-details">
+          <div class="contact-detail">
+            <svg viewbox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zM22 6l-10 7L2 6" /></svg>
+            <a href="mailto:witold@openplaninteriordevelopment.co.uk">witold@openplaninteriordevelopment.co.uk</a>
+          </div>
+          <div class="contact-detail">
+            <svg viewbox="0 0 24 24"><path d="M12 2a8 8 0 018 8c0 6-8 12-8 12s-8-6-8-12a8 8 0 018-8z" /><circle cx="12" cy="10" r="3" /></svg>
+            <span><span>Zachodni Londyn</span></span>
+          </div>
+          <div class="contact-detail">
+            <svg viewbox="0 0 24 24" fill="currentColor" stroke="none"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.149-.197.297-.767.967-.94 1.164-.173.199-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.787-1.48-1.758-1.653-2.054-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.611-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.549 4.142 1.595 5.945L.058 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.891-5.335 11.893-11.893A11.821 11.821 0 0020.464 3.488" /></svg>
+            <a href="https://wa.me/447834737937" target="_blank" rel="noopener">+44 7834 737937</a>
+          </div>
+        </div>
+
+        <!-- Contact form -->
+        <form id="contactForm" class="contact-form" action="https://formsubmit.co/witold@openplaninteriordevelopment.co.uk" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cf-name"><span>Twoje Imię</span></label>
+              <input type="text" id="cf-name" name="name" required placeholder="John Smith" autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label for="cf-email"><span>Adres Email</span></label>
+              <input type="email" id="cf-email" name="email" required placeholder="john@example.com" autocomplete="email">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cf-phone"><span>Numer Telefonu</span></label>
+              <input type="tel" id="cf-phone" name="phone" placeholder="07123 456789" autocomplete="tel">
+            </div>
+            <div class="form-group">
+              <label for="cf-service"><span>Usługa</span></label>
+              <select id="cf-service" name="service">
+                <option value=""><span>Wybierz usługę…</span></option>
+                <option value="extensions">Extensions / Rozbudowy</option>
+                <option value="renovations">Renovations / Remonty</option>
+                <option value="groundwork">Groundwork / Roboty Ziemne</option>
+                <option value="repairs">Repairs & Maintenance / Naprawy</option>
+                <option value="project-management">Project Management / Zarządzanie</option>
+                <option value="other">Other / Inne</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group form-group-full">
+            <label for="cf-message"><span>Szczegóły Projektu</span></label>
+            <textarea id="cf-message" name="message" rows="4" required placeholder="Tell us about your project…"></textarea>
+          </div>
+          <!-- Honeypot for spam -->
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+          <!-- FormSubmit config -->
+          <input type="hidden" name="_subject" value="New website enquiry - Open Plan Ltd">
+          <input type="hidden" name="_template" value="box">
+          <input type="hidden" name="_next" value="https://openplaninteriordevelopment.co.uk/pl/thank-you.html">
+          <button type="submit" class="btn btn-primary btn-lg form-submit-btn">
+            <span>Wyślij Wiadomość</span>
+          </button>
+          <div id="formStatus" class="form-status" style="display:none"></div>
+        </form>
       </div>
     </div>
   </section>
@@ -675,7 +1079,7 @@
   
   <!-- Built by credit -->
   <div class="built-by">
-    <a href="https://jubistra.com" target="_blank" rel="noopener">Built by jubistra.com</a>
+    <a href="https://boltproof.com" target="_blank" rel="noopener">Built by boltproof.com</a>
   </div>
 </footer>
 
@@ -717,43 +1121,65 @@
     // Contact form submission
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-      contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const status = document.getElementById('formStatus');
+      contactForm.addEventListener('submit', function() {
         const btn = contactForm.querySelector('.form-submit-btn');
-
-        const name = contactForm.querySelector('[name=name]').value.trim();
-        const email = contactForm.querySelector('[name=email]').value.trim();
-        const phone = contactForm.querySelector('[name=phone]').value.trim();
-        const service = contactForm.querySelector('[name=service]').value;
-        const message = contactForm.querySelector('[name=message]').value.trim();
-
-        const subject = 'Website enquiry — ' + (service || 'General');
-        const body = `Name: ${name}
-Email: ${email}
-Phone: ${phone}
-Service: ${service}
-
-${message}`;
-        const mailtoLink = 'mailto:witold@openplaninteriordevelopment.co.uk?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-
-        btn.disabled = true;
-        btn.innerHTML = 'Wysyłanie…';
-
-        window.location.href = mailtoLink;
-
-        status.style.display = 'block';
-        status.className = 'form-status success';
-        status.textContent = 'Otwarto aplikację email — wyślij wiadomość.';
-
-        setTimeout(function() {
-          btn.disabled = false;
-          contactForm.querySelector('.form-submit-btn span[data-lang=en]').innerHTML = 'Send Message';
-          contactForm.querySelector('.form-submit-btn span[data-lang=pl]').innerHTML = 'Wyślij Wiadomość';
-          btn.disabled = false;
-        }, 3000);
+        if (btn) { btn.disabled = true; btn.textContent = 'Wysyłanie…'; }
       });
     }
+
+    // Work gallery — phase tabs
+    const workTabs = document.querySelectorAll('.work-tab');
+    const workCards = document.querySelectorAll('.work-card');
+
+    function setWorkPhase(phase) {
+      workTabs.forEach(t => {
+        const on = t.getAttribute('data-phase') === phase;
+        t.classList.toggle('active', on);
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      workCards.forEach(c => {
+        c.classList.toggle('hidden-phase', c.getAttribute('data-phase') !== phase);
+      });
+    }
+
+    workTabs.forEach(tab => {
+      tab.addEventListener('click', () => setWorkPhase(tab.getAttribute('data-phase')));
+    });
+
+    // Work gallery — lightbox
+    const lightbox = document.getElementById('workLightbox');
+    const lbImg = document.getElementById('workLightboxImg');
+    const lbCaption = document.getElementById('workLightboxCaption');
+
+    function openLightbox(card) {
+      const img = card.querySelector('img');
+      if (!img) return;
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lbCaption.textContent = (card.getAttribute('data-caption-pl') || '');
+      lightbox.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    workCards.forEach(card => {
+      card.addEventListener('click', () => openLightbox(card));
+    });
+
+    if (lightbox) {
+      lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox || e.target.closest('.lb-close')) closeLightbox();
+      });
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && lightbox.style.display === 'flex') closeLightbox();
+    });
+
   </script>
 
 </body>
