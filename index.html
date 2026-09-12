@@ -597,6 +597,79 @@
     [data-lang-block="pl"] { display: none; }
     html[lang="en"] [data-lang-block="en"] { display: block; }
     html[lang="en"] [data-lang-block="pl"] { display: none; }
+
+    /* WORK GALLERY */
+    .work-tabs {
+      display: flex; justify-content: center; flex-wrap: wrap;
+      gap: 8px; margin: 0 auto 48px;
+    }
+    .work-tab {
+      padding: 10px 24px; border-radius: 999px;
+      font-size: 0.9rem; font-weight: 600; cursor: pointer;
+      font-family: inherit; letter-spacing: 0.01em;
+      background: transparent; color: var(--text-muted);
+      border: 1px solid var(--border);
+      transition: all var(--transition);
+    }
+    .work-tab:hover { border-color: var(--border-hover); color: var(--text); }
+    .work-tab.active {
+      background: linear-gradient(135deg, var(--green), var(--green-light));
+      color: #fff; border-color: transparent;
+      box-shadow: 0 0 20px var(--green-glow);
+    }
+    .work-grid { column-count: 2; column-gap: 28px; }
+    .work-card {
+      break-inside: avoid; -webkit-column-break-inside: avoid;
+      margin-bottom: 28px; display: block;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); overflow: hidden;
+      transition: all var(--transition); cursor: zoom-in;
+    }
+    .work-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-4px); box-shadow: var(--shadow-lg);
+    }
+    .work-img-wrap { overflow: hidden; }
+    .work-card img {
+      display: block; width: 100%; height: auto;
+      transition: transform 0.5s ease;
+    }
+    .work-card:hover img { transform: scale(1.03); }
+    .work-caption {
+      padding: 14px 18px; font-size: 0.85rem; font-weight: 500;
+      color: var(--text-muted); border-top: 1px solid var(--border);
+      background: var(--bg-card);
+    }
+    .work-card.hidden-phase { display: none; }
+
+    /* LIGHTBOX */
+    .work-lightbox {
+      position: fixed; inset: 0; z-index: 500; display: none;
+      align-items: center; justify-content: center;
+      background: rgba(6, 8, 12, 0.94); padding: 24px; cursor: zoom-out;
+    }
+    .work-lightbox img {
+      max-width: 100%; max-height: 92vh;
+      border-radius: var(--radius); box-shadow: var(--shadow-lg);
+    }
+    .work-lightbox .lb-close {
+      position: absolute; top: 20px; right: 24px;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2);
+      color: #fff; font-size: 1.4rem; line-height: 1; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all var(--transition);
+    }
+    .work-lightbox .lb-close:hover { background: rgba(255,255,255,0.2); }
+    .work-lightbox .lb-caption {
+      position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+      color: #fff; font-size: 0.9rem; font-weight: 500;
+      background: rgba(0,0,0,0.55); padding: 8px 18px; border-radius: 999px;
+      max-width: 90%; text-align: center;
+    }
+    @media (max-width: 768px) {
+      .work-grid { column-count: 1; column-gap: 0; }
+    }
   </style>
 </head>
 <body>
@@ -611,6 +684,7 @@
       </a>
       <div class="nav-links">
         <a href="#services"><span data-lang="en">Services</span><span data-lang="pl">Usługi</span></a>
+        <a href="#work"><span data-lang="en">Our Work</span><span data-lang="pl">Nasze Prace</span></a>
         <a href="#process"><span data-lang="en">How We Work</span><span data-lang="pl">Jak Pracujemy</span></a>
         <a href="#about"><span data-lang="en">About</span><span data-lang="pl">O Nas</span></a>
         <a href="#contact"><span data-lang="en">Contact</span><span data-lang="pl">Kontakt</span></a>
@@ -724,6 +798,118 @@
         </div>
 
       </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work" aria-label="Our recent work">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label"><span data-lang="en">Recent Project</span><span data-lang="pl">Ostatni Projekt</span></div>
+        <h2><span data-lang-block="en">A Chelsea terrace, transformed</span><span data-lang-block="pl">Kamienica w Chelsea — przemieniona</span></h2>
+        <p><span data-lang-block="en">A complete renovation in Chelsea, West London — new structural steelwork, a reconfigured layout and high-end finishes in every room.</span><span data-lang-block="pl">Kompletny remont w Chelsea, w zachodnim Londynie — nowa konstrukcja stalowa, zmieniony układ pomieszczeń i wykończenia z najwyższej półki w każdym wnętrzu.</span></p>
+      </div>
+
+      <div class="work-tabs" role="tablist" aria-label="Project phases">
+        <button class="work-tab active" data-phase="after" role="tab" aria-selected="true"><span data-lang="en">After</span><span data-lang="pl">Po</span></button>
+        <button class="work-tab" data-phase="during" role="tab" aria-selected="false"><span data-lang="en">During</span><span data-lang="pl">W trakcie</span></button>
+        <button class="work-tab" data-phase="before" role="tab" aria-selected="false"><span data-lang="en">Before</span><span data-lang="pl">Przed</span></button>
+      </div>
+
+      <div class="work-grid">
+
+        <figure class="work-card" data-phase="after" data-caption-en="Kitchen" data-caption-pl="Kuchnia">
+          <div class="work-img-wrap"><img src="images/after-kitchen-a.jpg" alt="Renovated kitchen — Chelsea, West London" loading="lazy" width="1888" height="900"></div>
+          <figcaption class="work-caption"><span data-lang="en">Kitchen</span><span data-lang="pl">Kuchnia</span></figcaption>
+        </figure>
+
+        <figure class="work-card" data-phase="after" data-caption-en="Kitchen &amp; dining" data-caption-pl="Kuchnia i jadalnia">
+          <div class="work-img-wrap"><img src="images/after-kitchen-b.jpg" alt="Renovated kitchen and dining area" loading="lazy" width="1254" height="900"></div>
+          <figcaption class="work-caption"><span data-lang="en">Kitchen &amp; dining</span><span data-lang="pl">Kuchnia i jadalnia</span></figcaption>
+        </figure>
+
+        <figure class="work-card" data-phase="after" data-caption-en="Study" data-caption-pl="Gabinet">
+          <div class="work-img-wrap"><img src="images/after-study.jpg" alt="Renovated study" loading="lazy" width="1254" height="900"></div>
+          <figcaption class="work-caption"><span data-lang="en">Study</span><span data-lang="pl">Gabinet</span></figcaption>
+        </figure>
+
+        <figure class="work-card" data-phase="after" data-caption-en="Living room &amp; hall" data-caption-pl="Salon i przedpokój">
+          <div class="work-img-wrap"><img src="images/after-living-hall.jpg" alt="Renovated living room and hall" loading="lazy" width="1254" height="900"></div>
+          <figcaption class="work-caption"><span data-lang="en">Living room &amp; hall</span><span data-lang="pl">Salon i przedpokój</span></figcaption>
+        </figure>
+
+        <figure class="work-card" data-phase="after" data-caption-en="Bedroom &amp; en-suite" data-caption-pl="Sypialnia z łazienką">
+          <div class="work-img-wrap"><img src="images/after-bedrooms.jpg" alt="Renovated bedroom and en-suite" loading="lazy" width="1254" height="900"></div>
+          <figcaption class="work-caption"><span data-lang="en">Bedroom &amp; en-suite</span><span data-lang="pl">Sypialnia z łazienką</span></figcaption>
+        </figure>
+
+        <figure class="work-card" data-phase="after" data-caption-en="Bathrooms" data-caption-pl="Łazienki">
+          <div class="work-img-wrap"><img src="images/after-bathrooms.jpg" alt="Renovated bathrooms" loading="lazy" width="1888" height="900"></div>
+          <figcaption class="work-caption"><span data-lang="en">Bathrooms</span><span data-lang="pl">Łazienki</span></figcaption>
+        </figure>
+
+        <figure class="work-card" data-phase="after" data-caption-en="Front elevation" data-caption-pl="Elewacja frontowa">
+          <div class="work-img-wrap"><img src="images/after-front.jpg" alt="Refurbished front elevation" loading="lazy" width="1888" height="900"></div>
+          <figcaption class="work-caption"><span data-lang="en">Front elevation</span><span data-lang="pl">Elewacja frontowa</span></figcaption>
+        </figure>
+
+        <figure class="work-card" data-phase="after" data-caption-en="Entrance" data-caption-pl="Wejście">
+          <div class="work-img-wrap"><img src="images/after-entrance.jpg" alt="Refurbished entrance" loading="lazy" width="1254" height="900"></div>
+          <figcaption class="work-caption"><span data-lang="en">Entrance</span><span data-lang="pl">Wejście</span></figcaption>
+        </figure>
+
+        <figure class="work-card" data-phase="after" data-caption-en="Rooftop terrace" data-caption-pl="Taras na dachu">
+          <div class="work-img-wrap"><img src="images/after-terrace.jpg" alt="Rooftop terrace" loading="lazy" width="1888" height="900"></div>
+          <figcaption class="work-caption"><span data-lang="en">Rooftop terrace</span><span data-lang="pl">Taras na dachu</span></figcaption>
+        </figure>
+
+        <figure class="work-card hidden-phase" data-phase="during" data-caption-en="Structural steelwork" data-caption-pl="Konstrukcja stalowa">
+          <div class="work-img-wrap"><img src="images/during-steelwork.jpg" alt="Structural steelwork being installed" loading="lazy" width="1888" height="900"></div>
+          <figcaption class="work-caption"><span data-lang="en">Structural steelwork</span><span data-lang="pl">Konstrukcja stalowa</span></figcaption>
+        </figure>
+
+        <figure class="work-card hidden-phase" data-phase="during" data-caption-en="Wall openings" data-caption-pl="Otwory w ścianach">
+          <div class="work-img-wrap"><img src="images/during-openings.jpg" alt="New wall openings formed and propped" loading="lazy" width="1888" height="900"></div>
+          <figcaption class="work-caption"><span data-lang="en">Wall openings</span><span data-lang="pl">Otwory w ścianach</span></figcaption>
+        </figure>
+
+        <figure class="work-card hidden-phase" data-phase="during" data-caption-en="Excavation &amp; underpinning" data-caption-pl="Wykopy i podbijanie">
+          <div class="work-img-wrap"><img src="images/during-excavation.jpg" alt="Excavation and underpinning works" loading="lazy" width="1888" height="900"></div>
+          <figcaption class="work-caption"><span data-lang="en">Excavation &amp; underpinning</span><span data-lang="pl">Wykopy i podbijanie</span></figcaption>
+        </figure>
+
+        <figure class="work-card hidden-phase" data-phase="during" data-caption-en="Steelwork installation" data-caption-pl="Montaż konstrukcji stalowej">
+          <div class="work-img-wrap"><img src="images/during-steel.jpg" alt="Steel beams craned into position" loading="lazy" width="1888" height="900"></div>
+          <figcaption class="work-caption"><span data-lang="en">Steelwork installation</span><span data-lang="pl">Montaż konstrukcji stalowej</span></figcaption>
+        </figure>
+
+        <figure class="work-card hidden-phase" data-phase="during" data-caption-en="Scaffolding &amp; finishing" data-caption-pl="Rusztowania i wykończenia">
+          <div class="work-img-wrap"><img src="images/during-scaffolding.jpg" alt="Scaffolding and finishing works" loading="lazy" width="1888" height="900"></div>
+          <figcaption class="work-caption"><span data-lang="en">Scaffolding &amp; finishing</span><span data-lang="pl">Rusztowania i wykończenia</span></figcaption>
+        </figure>
+
+        <figure class="work-card hidden-phase" data-phase="before" data-caption-en="Exterior, bathroom &amp; bedroom" data-caption-pl="Elewacja, łazienka i sypialnia">
+          <div class="work-img-wrap"><img src="images/before-1.jpg" alt="Original condition — exterior, bathroom and bedroom" loading="lazy" width="1888" height="900"></div>
+          <figcaption class="work-caption"><span data-lang="en">Exterior, bathroom &amp; bedroom</span><span data-lang="pl">Elewacja, łazienka i sypialnia</span></figcaption>
+        </figure>
+
+        <figure class="work-card hidden-phase" data-phase="before" data-caption-en="Facade, garden &amp; kitchen" data-caption-pl="Elewacja, ogród i kuchnia">
+          <div class="work-img-wrap"><img src="images/before-2.jpg" alt="Original condition — facade, garden and kitchen" loading="lazy" width="1888" height="900"></div>
+          <figcaption class="work-caption"><span data-lang="en">Facade, garden &amp; kitchen</span><span data-lang="pl">Elewacja, ogród i kuchnia</span></figcaption>
+        </figure>
+
+        <figure class="work-card hidden-phase" data-phase="before" data-caption-en="Rear, staircase &amp; bedroom" data-caption-pl="Tył budynku, schody i sypialnia">
+          <div class="work-img-wrap"><img src="images/before-3.jpg" alt="Original condition — rear, staircase and bedroom" loading="lazy" width="1888" height="900"></div>
+          <figcaption class="work-caption"><span data-lang="en">Rear, staircase &amp; bedroom</span><span data-lang="pl">Tył budynku, schody i sypialnia</span></figcaption>
+        </figure>
+
+      </div>
+    </div>
+
+    <div class="work-lightbox" id="workLightbox" role="dialog" aria-modal="true" aria-label="Image preview">
+      <img id="workLightboxImg" src="" alt="">
+      <span class="lb-caption" id="workLightboxCaption"></span>
+      <button class="lb-close" aria-label="Close">×</button>
     </div>
   </section>
 
@@ -948,6 +1134,61 @@
         if (btn) { btn.disabled = true; btn.textContent = currentLang === 'pl' ? 'Wysyłanie…' : 'Sending…'; }
       });
     }
+
+    // Work gallery — phase tabs
+    const workTabs = document.querySelectorAll('.work-tab');
+    const workCards = document.querySelectorAll('.work-card');
+
+    function setWorkPhase(phase) {
+      workTabs.forEach(t => {
+        const on = t.getAttribute('data-phase') === phase;
+        t.classList.toggle('active', on);
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      workCards.forEach(c => {
+        c.classList.toggle('hidden-phase', c.getAttribute('data-phase') !== phase);
+      });
+    }
+
+    workTabs.forEach(tab => {
+      tab.addEventListener('click', () => setWorkPhase(tab.getAttribute('data-phase')));
+    });
+
+    // Work gallery — lightbox
+    const lightbox = document.getElementById('workLightbox');
+    const lbImg = document.getElementById('workLightboxImg');
+    const lbCaption = document.getElementById('workLightboxCaption');
+
+    function openLightbox(card) {
+      const img = card.querySelector('img');
+      if (!img) return;
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lbCaption.textContent = currentLang === 'pl'
+        ? (card.getAttribute('data-caption-pl') || '')
+        : (card.getAttribute('data-caption-en') || '');
+      lightbox.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    workCards.forEach(card => {
+      card.addEventListener('click', () => openLightbox(card));
+    });
+
+    if (lightbox) {
+      lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox || e.target.closest('.lb-close')) closeLightbox();
+      });
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && lightbox.style.display === 'flex') closeLightbox();
+    });
 
   </script>
 
