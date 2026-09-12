@@ -100,6 +100,7 @@
     [data-theme="light"] .about-text ul li,
     [data-theme="light"] .contact-card h2,
     [data-theme="light"] .contact-detail,
+    [data-theme="light"] .contact-detail a,
     [data-theme="light"] .form-group label,
     [data-theme="light"] .form-group input,
     [data-theme="light"] .form-group select,
@@ -442,6 +443,9 @@
       border-radius: var(--radius); font-size: 0.9rem; color: #fff;
     }
     .contact-detail svg { width: 18px; height: 18px; stroke: var(--green-light); fill: none; stroke-width: 2; }
+    .contact-detail a { color: var(--green-light); text-decoration: none; transition: text-decoration 0.2s; }
+    .contact-detail a:hover { text-decoration: underline; }
+    .contact-detail a svg { width: 18px; height: 18px; stroke: var(--green-light); fill: none; stroke-width: 2; }
 
     /* CONTACT FORM */
     .contact-form {
