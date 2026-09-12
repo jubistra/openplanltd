@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Open Plan Interior Development Ltd — Test Page</title>
+  <meta name="theme-color" content="#3d3d3d">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Cormorant:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #3d3d3d;
+      --bg-elevated: #383838;
+      --bg-card: #424242;
+      --bg-card-hover: #4a4a4a;
+      --border: #555;
+      --border-hover: #666;
+      --silver: #c8c8c8;
+      --silver-light: #d8d8d8;
+      --silver-dim: #a0a0a0;
+      --silver-dimmer: #808080;
+      --gold: #c5a872;
+      --gold-light: #d4bb8a;
+      --radius: 10px;
+      --radius-lg: 16px;
+      --max-width: 960px;
+      --serif-display: 'Cinzel', 'Trajan Pro', serif;
+      --serif-body: 'Cormorant Garamond', 'Cormorant', serif;
+      --transition: 0.3s ease;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--serif-body);
+      background: var(--bg);
+      color: var(--silver);
+      line-height: 1.7;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    ::selection { background: var(--gold); color: #fff; }
+    a { color: var(--silver-light); text-decoration: none; transition: color var(--transition); }
+    a:hover { color: var(--gold-light); }
+
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 32px; }
+
+    /* ---- HEADER (card top) ---- */
+    .card-header {
+      text-align: center;
+      padding: 80px 32px 48px;
+      border-bottom: 1px solid rgba(200, 200, 200, 0.15);
+    }
+    .card-header .company-name {
+      font-family: var(--serif-display);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      color: var(--silver-light);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .card-header .company-sub {
+      font-family: var(--serif-display);
+      font-size: clamp(0.7rem, 1.8vw, 0.9rem);
+      font-weight: 400;
+      letter-spacing: 0.25em;
+      color: var(--silver-dim);
+      text-transform: uppercase;
+    }
+    .divider {
+      width: 70%;
+      max-width: 500px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(200,200,200,0.35), transparent);
+      margin: 0 auto;
+    }
+    .divider.tight { margin: 32px auto; }
+
+    /* ---- HERO ---- */
+    .hero {
+      text-align: center;
+      padding: 80px 32px;
+    }
+    .hero h1 {
+      font-family: var(--serif-display);
+      font-size: clamp(1.6rem, 4vw, 2.6rem);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--silver-light);
+      line-height: 1.3;
+      margin-bottom: 24px;
+    }
+    .hero .tagline {
+      font-family: var(--serif-body);
+      font-size: clamp(1.15rem, 2.5vw, 1.5rem);
+      font-weight: 400;
+      color: var(--silver-dim);
+      font-style: italic;
+      max-width: 620px;
+      margin: 0 auto 48px;
+      line-height: 1.6;
+    }
+
+    /* ---- TRUST STRIP ---- */
+    .trust-strip {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .trust-item {
+      text-align: center;
+      padding: 16px 32px;
+      border-right: 1px solid rgba(200,200,200,0.12);
+    }
+    .trust-item:last-child { border-right: none; }
+    .trust-item .stat {
+      font-family: var(--serif-display);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+    .trust-item .label {
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--silver-dimmer);
+    }
+
+    /* ---- GOOGLE BUSINESS SECTION ---- */
+    .gbp-section {
+      padding: 64px 32px;
+    }
+    .gbp-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 48px 40px;
+      max-width: 680px;
+      margin: 0 auto;
+      transition: all var(--transition);
+    }
+    .gbp-card:hover {
+      border-color: var(--border-hover);
+      background: var(--bg-card-hover);
+    }
+    .gbp-card .gbp-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .gbp-card .gbp-icon {
+      width: 48px; height: 48px;
+      flex-shrink: 0;
+      background: #fff;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .gbp-card .gbp-icon svg { width: 28px; height: 28px; }
+    .gbp-card .gbp-title {
+      font-family: var(--serif-display);
+      font-size: 1.3rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--silver-light);
+      text-transform: uppercase;
+    }
+    .gbp-card .gbp-subtitle {
+      font-size: 0.9rem;
+      color: var(--silver-dim);
+      letter-spacing: 0.03em;
+      margin-top: 2px;
+    }
+
+    .gbp-rating {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .gbp-rating .score {
+      font-family: var(--serif-display);
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .gbp-rating .stars {
+      display: flex;
+      gap: 2px;
+    }
+    .gbp-rating .star {
+      width: 20px; height: 20px;
+      color: var(--gold);
+    }
+    .gbp-rating .review-count {
+      font-size: 0.9rem;
+      color: var(--silver-dim);
+    }
+
+    .gbp-info {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .gbp-info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(200,200,200,0.08);
+    }
+    .gbp-info-row:last-child { border-bottom: none; }
+    .gbp-info-row .icon {
+      width: 20px; height: 20px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: var(--gold);
+    }
+    .gbp-info-row .content {
+      flex: 1;
+    }
+    .gbp-info-row .content .key {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--silver-dimmer);
+      margin-bottom: 2px;
+    }
+    .gbp-info-row .content .val {
+      font-size: 1.05rem;
+      color: var(--silver-light);
+      line-height: 1.5;
+    }
+    .gbp-info-row .content .val a {
+      color: var(--silver-light);
+      border-bottom: 1px solid rgba(200,200,200,0.2);
+    }
+    .gbp-info-row .content .val a:hover {
+      color: var(--gold-light);
+      border-bottom-color: var(--gold);
+    }
+
+    .gbp-hours {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 6px 24px;
+      font-size: 0.95rem;
+      margin-top: 4px;
+    }
+    .gbp-hours .day { color: var(--silver-dim); }
+    .gbp-hours .time { color: var(--silver-light); text-align: right; }
+    .gbp-hours .closed { color: var(--silver-dimmer); font-style: italic; }
+
+    .gbp-cta {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+    .gbp-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: var(--radius);
+      font-family: var(--serif-display);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all var(--transition);
+      text-decoration: none;
+    }
+    .gbp-btn-primary {
+      background: var(--gold);
+      color: #fff;
+    }
+    .gbp-btn-primary:hover {
+      background: var(--gold-light);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(197,168,114,0.3);
+    }
+    .gbp-btn-secondary {
+      background: transparent;
+      color: var(--silver);
+      border: 1px solid var(--border);
+    }
+    .gbp-btn-secondary:hover {
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+    .gbp-btn svg { width: 16px; height: 16px; }
+
+    /* ---- MAP EMBED ---- */
+    .gbp-map {
+      margin-top: 24px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .gbp-map iframe {
+      width: 100%;
+      height: 260px;
+      border: 0;
+      display: block;
+      filter: grayscale(0.3) brightness(0.85);
+    }
+
+    /* ---- CONTACT (card bottom) ---- */
+    .contact-section {
+      text-align: center;
+      padding: 64px 32px 80px;
+    }
+    .contact-section .contact-name {
+      font-family: var(--serif-body);
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--silver-light);
+      margin-bottom: 20px;
+    }
+    .contact-section .contact-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 1.05rem;
+      color: var(--silver-dim);
+      margin-bottom: 10px;
+    }
+    .contact-section .contact-row a {
+      color: var(--silver-light);
+    }
+    .contact-section .contact-row .icon {
+      width: 16px; height: 16px;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* ---- FOOTER ---- */
+    .footer {
+      text-align: center;
+      padding: 24px 32px;
+      border-top: 1px solid rgba(200,200,200,0.1);
+      font-size: 0.8rem;
+      color: var(--silver-dimmer);
+      letter-spacing: 0.05em;
+    }
+    .footer a { color: var(--silver-dimmer); }
+    .footer a:hover { color: var(--gold-light); }
+
+    @media (max-width: 600px) {
+      .trust-item { border-right: none; border-bottom: 1px solid rgba(200,200,200,0.08); padding: 12px 24px; }
+      .gbp-card { padding: 32px 24px; }
+      .gbp-hours { grid-template-columns: 1fr; }
+      .gbp-hours .time { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Card top: company name ── -->
+  <div class="card-header">
+    <div class="company-name">Open Plan</div>
+    <div class="company-sub">Interior Development Ltd</div>
+  </div>
+  <div class="divider"></div>
+
+  <!-- ── Hero ── -->
+  <div class="hero container">
+    <h1>Building with precision,<br>finishing with pride.</h1>
+    <p class="tagline">Construction &amp; building works across West London and surrounding areas. Since 2017.</p>
+
+    <div class="trust-strip">
+      <div class="trust-item">
+        <div class="stat">2017</div>
+        <div class="label">Established</div>
+      </div>
+      <div class="trust-item">
+        <div class="stat">5.0★</div>
+        <div class="label">Google Rated</div>
+      </div>
+      <div class="trust-item">
+        <div class="stat">100%</div>
+        <div class="label">Insured</div>
+      </div>
+      <div class="trust-item">
+        <div class="stat">W13</div>
+        <div class="label">West London</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ── Google Business Profile ── -->
+  <div class="gbp-section">
+    <div class="gbp-card">
+      <!-- Header -->
+      <div class="gbp-header">
+        <div class="gbp-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="#ea4335" stroke="#ea4335" stroke-width="0.5"/>
+            <circle cx="12" cy="9" r="2.5" fill="#fff"/>
+          </svg>
+        </div>
+        <div>
+          <div class="gbp-title">Google Business Profile</div>
+          <div class="gbp-subtitle">Verified on Google Maps</div>
+        </div>
+      </div>
+
+      <!-- Rating -->
+      <div class="gbp-rating">
+        <span class="score">5.0</span>
+        <span class="stars">
+          <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </span>
+        <span class="review-count">1 review</span>
+      </div>
+
+      <!-- Info rows -->
+      <div class="gbp-info">
+        <div class="gbp-info-row">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div class="content">
+            <div class="key">Address</div>
+            <div class="val">94 Drayton Ave, London W13 0LF, United Kingdom</div>
+          </div>
+        </div>
+        <div class="gbp-info-row">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.36 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.34 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div class="content">
+            <div class="key">Phone</div>
+            <div class="val"><a href="tel:+447834737937">+44 7834 737937</a></div>
+          </div>
+        </div>
+        <div class="gbp-info-row">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+          <div class="content">
+            <div class="key">Hours</div>
+            <div class="gbp-hours">
+              <span class="day">Monday</span>       <span class="time">8 AM – 5 PM</span>
+              <span class="day">Tuesday</span>      <span class="time">8 AM – 5 PM</span>
+              <span class="day">Wednesday</span>    <span class="time">8 AM – 5 PM</span>
+              <span class="day">Thursday</span>     <span class="time">8 AM – 5 PM</span>
+              <span class="day">Friday</span>       <span class="time">8 AM – 5 PM</span>
+              <span class="day">Saturday</span>     <span class="time closed">Closed</span>
+              <span class="day">Sunday</span>       <span class="time closed">Closed</span>
+            </div>
+          </div>
+        </div>
+        <div class="gbp-info-row">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          <div class="content">
+            <div class="key">Category</div>
+            <div class="val">Interior Designer</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Map embed -->
+      <div class="gbp-map">
+        <iframe
+          src="https://www.google.com/maps?q=Open+Plan+Interior+Development+Ltd,94+Drayton+Ave,London+W13+0LF&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Open Plan Interior Development Ltd on Google Maps">
+        </iframe>
+      </div>
+
+      <!-- CTA buttons -->
+      <div class="gbp-cta">
+        <a class="gbp-btn gbp-btn-primary" href="https://maps.app.goo.gl/pffjgizkB9Xr6Lzt7" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          View on Google Maps
+        </a>
+        <a class="gbp-btn gbp-btn-secondary" href="https://maps.app.goo.gl/pffjgizkB9Xr6Lzt7" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          Leave a Review
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ── Card bottom: contact ── -->
+  <div class="contact-section">
+    <div class="contact-name">Witold Zolnierski</div>
+    <div class="contact-row">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.36 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.34 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <a href="tel:+447834737937">+44 7834 737937</a>
+    </div>
+    <div class="contact-row">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      <a href="mailto:witold@openplaninteriordevelopment.co.uk">witold@openplaninteriordevelopment.co.uk</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    Open Plan Interior Development Ltd &middot; West London &middot; <a href="https://maps.app.goo.gl/pffjgizkB9Xr6Lzt7" target="_blank" rel="noopener">Google Maps</a>
+  </div>
+
+</body>
+</html>
