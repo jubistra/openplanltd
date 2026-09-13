@@ -53,8 +53,8 @@
       --green-glow-strong: rgba(212, 184, 124, 0.30);
       --amber: #d4b87c;
       --text: #f2f0eb;
-      --text-muted: #c4c0b8;
-      --text-dim: #a29d94;
+      --text-muted: #ddd9d1;
+      --text-dim: #c3bdb3;
       --white: #ffffff;
       --radius-sm: 8px;
       --radius: 12px;
@@ -679,15 +679,33 @@
     }
   
     /* --- business-card theme: typography + legibility, appended last --- */
+    html { font-size: 112.5%; }            /* 1rem = 18px, lifts EVERY rem size */
+
     h1, h2, h3, h4, h5, h6, .logo, .logo-text, .btn, .nav-link, .tab, .section-label {
       font-family: 'Cinzel', 'Times New Roman', serif;
       letter-spacing: 0.06em;
     }
     h1, h2, h3 { font-variant: small-caps; color: #ffffff; }
-    body { font-size: 1.22rem; font-weight: 500; line-height: 1.75; }
-    p, li, .lead, .sub, .muted, td, th, label, input, textarea, button, a { color: var(--text); }
-    p, li { font-size: 1.16rem; line-height: 1.8; }
-    small, .small, .caption, .meta, .badge, .pill, .tag { font-size: 1.02rem !important; }
+
+    body { font-weight: 500; line-height: 1.75; }
+
+    /* High-specificity: beat component rules like `.service-card p` */
+    body p, body li, body td, body dd,
+    body .service-card p, body .card p, body .step p, body .feature p,
+    body .work-caption, body .lb-caption, body .footer p, body .hero p {
+      font-size: 1.14rem !important;       /* ~20.5px */
+      line-height: 1.8 !important;
+      color: var(--text) !important;       /* no more dim grey body copy */
+      font-weight: 500 !important;
+    }
+    body small, body .small, body .caption, body .meta,
+    body .badge, body .pill, body .tag, body figcaption {
+      font-size: 1rem !important;          /* 18px floor */
+      color: var(--text-muted) !important;
+    }
+    body label, body input, body textarea, body select, body button {
+      font-size: 1.04rem !important;
+    }
   </style>
 </head>
 <body>
