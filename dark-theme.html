@@ -5,7 +5,7 @@
   <title>Open Plan Interior Development Ltd — Construction & Building Works | West London, UK</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Open Plan Interior Development Ltd is a construction and building works company serving West London and surrounding areas. Quality builds, renovations, and groundwork across West London.">
-  <meta name="theme-color" content="#3d3d3d">
+  <meta name="theme-color" content="#2b2b2b">
 
   <!-- Social preview -->
   <meta property="og:title" content="Open Plan Interior Development Ltd — Construction & Building Works">
@@ -41,21 +41,21 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #3d3d3d;
-      --bg-elevated: #444444;
-      --bg-card: #4a4a4a;
-      --bg-card-hover: #525252;
-      --border: #5f5f5f;
-      --border-hover: #7a7a7a;
-      --green: #c5a872;
-      --green-light: #d9c191;
-      --green-glow: rgba(197, 168, 114, 0.15);
-      --green-glow-strong: rgba(197, 168, 114, 0.28);
-      --amber: #c5a872;
-      --text: #c8c8c8;
-      --text-muted: #9a9a9a;
-      --text-dim: #7d7d7d;
-      --white: #f2f2f2;
+      --bg: #2b2b2b;
+      --bg-elevated: #333333;
+      --bg-card: #383838;
+      --bg-card-hover: #424242;
+      --border: #575757;
+      --border-hover: #8a8a8a;
+      --green: #d4b87c;
+      --green-light: #e6cf9d;
+      --green-glow: rgba(212, 184, 124, 0.16);
+      --green-glow-strong: rgba(212, 184, 124, 0.30);
+      --amber: #d4b87c;
+      --text: #f2f0eb;
+      --text-muted: #c4c0b8;
+      --text-dim: #a29d94;
+      --white: #ffffff;
       --radius-sm: 8px;
       --radius: 12px;
       --radius-lg: 20px;
@@ -678,12 +678,14 @@
       .work-grid { column-count: 1; column-gap: 0; }
     }
   
-    /* --- business-card theme: typography only, appended last --- */
+    /* --- business-card theme: typography + legibility, appended last --- */
     h1, h2, h3, h4, h5, h6, .logo, .logo-text, .btn, .nav-link, .tab, .section-label {
       font-family: 'Cinzel', 'Times New Roman', serif;
       letter-spacing: 0.06em;
     }
-    h1, h2, h3 { font-variant: small-caps; }
+    h1, h2, h3 { font-variant: small-caps; color: #ffffff; }
+    body { font-size: 1.06rem; font-weight: 500; }
+    p, li, .lead, .sub, .muted { color: var(--text); }
   </style>
 </head>
 <body>
