@@ -258,7 +258,7 @@
 
     /* HERO */
     #hero {
-      min-height: 100vh; display: flex; align-items: center; padding-top: var(--header-height);
+      min-height: auto; padding: calc(var(--header-height) + 64px) 0 96px; display: flex; align-items: center;
       background: radial-gradient(ellipse 80% 50% at 50% -10%, var(--green-glow), transparent),
                   radial-gradient(ellipse 60% 40% at 80% 60%, rgba(45,125,70,0.08), transparent);
     }
@@ -280,7 +280,7 @@
     #hero h1 {
       font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900;
       line-height: 1.05; letter-spacing: -0.03em;
-      margin-bottom: 80px; color: #fff;
+      margin-bottom: 32px; color: #fff;
     }
     #hero h1 .gradient-text {
       background: linear-gradient(135deg, var(--green-light), #ff6b7d);
@@ -289,7 +289,7 @@
 
     #hero p.subtitle {
       font-size: clamp(1.1rem, 2.2vw, 1.35rem); color: var(--text-muted);
-      max-width: 780px; margin: 80px auto 100px; line-height: 1.7;
+      max-width: 780px; margin: 32px auto 48px; line-height: 1.7;
     }
 
     .hero-cta-group {
