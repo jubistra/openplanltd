@@ -563,11 +563,13 @@
 
     @media (max-width: 768px) {
       .nav-links { display: none; }
-      .nav-cta { gap: 6px; }
+      .nav-cta { gap: 4px; }
+      .nav-cta .btn-secondary { display: none; }
       .nav-brand { font-size: 1.4rem; }
       .nav-brand { word-break: keep-all; white-space: nowrap; }
       .nav-brand .logo-mark { width: 28px; height: 28px; font-size: 1.4rem; }
-      .nav-cta .btn { padding: 8px 14px; font-size: 1.4rem; }
+      .nav-cta .btn { padding: 7px 12px; font-size: 0.85rem; }
+      .nav-cta .btn span { white-space: nowrap; }
       .about-grid { grid-template-columns: 1fr; gap: 56px; }
       section { padding: 80px 0; }
       .contact-card { padding: 32px 24px; }
@@ -585,6 +587,10 @@
       .process-timeline { grid-template-columns: repeat(2, 1fr); }
       .about-stats { grid-template-columns: repeat(2, 1fr); }
       .contact-form { max-width: 100%; }
+    }
+    @media (max-width: 380px) {
+      .nav-cta .btn-primary { font-size: 0.78rem; padding: 6px 10px; }
+      .brand-short { font-size: 0.95rem; }
     }
     @media (max-width: 480px) {
       .nav-cta .btn-secondary { display: none; }
