@@ -442,7 +442,10 @@
       display: flex; align-items: center; gap: 10px;
       padding: 12px 20px; background: var(--bg); border: 1px solid var(--border);
       border-radius: var(--radius); font-size: 0.9rem; color: #fff;
+    
+      max-width: 100%; overflow-wrap: anywhere; word-break: break-word;
     }
+    .contact-detail a { overflow-wrap: anywhere; word-break: break-word; }
     .contact-detail svg { width: 18px; height: 18px; stroke: var(--green-light); fill: none; stroke-width: 2; }
 
     /* CONTACT FORM */
@@ -522,6 +525,8 @@
       50% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4), 0 0 0 12px rgba(37, 211, 102, 0); }
     }
     @media (max-width: 480px) {
+      .contact-detail { width: 100%; box-sizing: border-box; justify-content: flex-start; font-size: 1rem; }
+      .contact-details { gap: 12px; }
       .whatsapp-float { bottom: 20px; right: 20px; width: 54px; height: 54px; }
       .whatsapp-float svg { width: 26px; height: 26px; }
     }
