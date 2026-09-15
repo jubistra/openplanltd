@@ -562,15 +562,25 @@
     .footer-info a:hover { color: var(--green-light); }
 
     /* MOBILE */
-    @media (max-width: 1100px) {
-      .nav-links { display: none; }
+    @media (max-width: 1300px) {
+      :root { --header-height: 132px; }
+      header { height: auto; padding: 12px 0; }
+      .nav {
+        flex-wrap: wrap; row-gap: 10px;
+      }
+      .nav-brand { order: 1; }
+      .nav-cta { order: 2; }
+      .nav-links {
+        order: 3; flex-basis: 100%; width: 100%;
+        justify-content: center; flex-wrap: wrap; row-gap: 8px;
+        display: flex !important;
+      }
     }
     @media (max-width: 1000px) {
       .trust-signals { grid-template-columns: repeat(2, 1fr); gap: 24px; }
     }
 
     @media (max-width: 768px) {
-      .nav-links { display: none; }
       .nav-cta { gap: 4px; }
       .nav-cta .btn-secondary { display: none; }
       .nav-brand { font-size: 1.05rem; }
